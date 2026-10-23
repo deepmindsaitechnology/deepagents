@@ -49,8 +49,14 @@ class PlatformTests(unittest.TestCase):
                 result = self.client.post('/api/chat', json={'message':'Hello','history':[{'role':'system','content':'invalid'}]}).json()
                 self.assertEqual(result['mode'], 'Groq')
                 self.assertEqual(len(post.call_args.kwargs['json']['messages']), 2)
-                post.return_value = httpx.Response(429)
-                self.assertEqual(self.client.post('/api/chat', json={'message':'Hello'}).status_code, 502)
+                for status, expected in [(401, 'API key'), (403, 'denied access'), (404, 'model'), (429, 'quota'), (503, 'service')]:
+                    post.return_value = httpx.Response(status, text='sensitive upstream content')
+                    response = self.client.post('/api/chat', json={'message':'Hello'})
+                    self.assertEqual(response.status_code, 502)
+                    self.assertIn(expected, response.json()['detail'])
+                    self.assertIn(str(status), response.json()['detail'])
+                    self.assertNotIn('sensitive', response.text)
+                    self.assertNotIn('test-key', response.text)
 
 if __name__ == '__main__':
     unittest.main()

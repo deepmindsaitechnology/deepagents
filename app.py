@@ -90,7 +90,16 @@ async def chat(body: Chat):
             async with httpx.AsyncClient(timeout=35) as client:
                 response = await client.post('https://api.groq.com/openai/v1/chat/completions', headers={'Authorization': f'Bearer {key}'}, json={'model': os.getenv('GROQ_MODEL', 'llama-3.3-70b-versatile'), 'messages': [{'role': 'system', 'content': system}, *history, {'role': 'user', 'content': body.message}], 'max_tokens': 700})
             if response.status_code != 200:
-                raise HTTPException(502, 'Groq request failed. Check the server key, model availability, and usage limits.')
+                messages = {
+                    400: 'Groq rejected the request. Check GROQ_MODEL against the models available in your Groq console.',
+                    401: 'Groq rejected the API key. Set a valid GROQ_API_KEY in the same terminal used to start the server, then restart.',
+                    403: 'Groq denied access. Check account permissions, model access, and regional or network restrictions.',
+                    404: 'Groq could not find the requested model. Set GROQ_MODEL to an available model ID and restart.',
+                    413: 'Groq rejected the request size. Reduce reference text or reset the conversation.',
+                    429: 'Groq rate limit or quota reached. Check usage in the Groq console, wait for the limit to reset, and retry.',
+                }
+                detail = messages.get(response.status_code, 'Groq service request failed. Check Groq service status and retry.')
+                raise HTTPException(502, f'{detail} (Groq HTTP {response.status_code})')
             answer = response.json()['choices'][0]['message']['content']
         except (httpx.HTTPError, KeyError, ValueError):
             raise HTTPException(502, 'Groq could not complete this request. Please retry later.')
