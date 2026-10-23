@@ -1,6 +1,9 @@
 import os
 import tempfile
 import unittest
+import shutil
+import subprocess
+import sys
 from unittest.mock import patch, AsyncMock
 from fastapi.testclient import TestClient
 import httpx
@@ -57,6 +60,20 @@ class PlatformTests(unittest.TestCase):
                     self.assertIn(str(status), response.json()['detail'])
                     self.assertNotIn('sensitive', response.text)
                     self.assertNotIn('test-key', response.text)
+
+class EnvironmentTests(unittest.TestCase):
+    def test_dotenv_load_and_environment_precedence(self):
+        with tempfile.TemporaryDirectory() as folder:
+            root = app.Path(folder)
+            shutil.copy(app.ROOT / 'app.py', root / 'app.py')
+            (root / 'static').mkdir()
+            (root / '.env').write_text('GROQ_API_KEY=local-test-key\nGROQ_MODEL=local-model\nDEEPAGENT_DB=local.db\n')
+            environment = {k: v for k, v in os.environ.items() if k not in ('GROQ_API_KEY', 'GROQ_MODEL', 'DEEPAGENT_DB', 'PYTHON_DOTENV_DISABLED')}
+            script = "import app, os; assert os.environ['GROQ_API_KEY']=='local-test-key'; assert app.status()['model']=='local-model'; assert app.DB==app.ROOT/'local.db'"
+            subprocess.run([sys.executable, '-c', script], cwd=root, env=environment, check=True)
+            environment['GROQ_API_KEY'] = 'injected-test-key'
+            script = "import app, os; assert os.environ['GROQ_API_KEY']=='injected-test-key'"
+            subprocess.run([sys.executable, '-c', script], cwd=root, env=environment, check=True)
 
 if __name__ == '__main__':
     unittest.main()

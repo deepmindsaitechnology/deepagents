@@ -11,11 +11,16 @@ from fastapi import FastAPI, HTTPException
 from fastapi.responses import FileResponse
 from fastapi.staticfiles import StaticFiles
 from pydantic import BaseModel, Field
+from dotenv import load_dotenv
 
-ROOT = Path(__file__).parent
+ROOT = Path(__file__).resolve().parent
+# Load local configuration without replacing injected or exported settings.
+load_dotenv(ROOT / '.env', override=False)
 app = FastAPI(title='DeepAgent POC')
 app.mount('/static', StaticFiles(directory=ROOT / 'static'), name='static')
-DB = Path(os.getenv('DEEPAGENT_DB', str(ROOT / 'deepagent.db')))
+DB = Path(os.getenv('DEEPAGENT_DB') or 'deepagent.db').expanduser()
+if not DB.is_absolute():
+    DB = ROOT / DB
 
 
 def connect():
@@ -92,7 +97,7 @@ async def chat(body: Chat):
             if response.status_code != 200:
                 messages = {
                     400: 'Groq rejected the request. Check GROQ_MODEL against the models available in your Groq console.',
-                    401: 'Groq rejected the API key. Set a valid GROQ_API_KEY in the same terminal used to start the server, then restart.',
+                    401: 'Groq rejected the API key. Set a valid GROQ_API_KEY in your .env file or server environment, then restart.',
                     403: 'Groq denied access. Check account permissions, model access, and regional or network restrictions.',
                     404: 'Groq could not find the requested model. Set GROQ_MODEL to an available model ID and restart.',
                     413: 'Groq rejected the request size. Reduce reference text or reset the conversation.',

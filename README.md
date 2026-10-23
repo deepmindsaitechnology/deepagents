@@ -33,9 +33,35 @@ python -m uvicorn app:app --reload --port 8000
 
 Open **http://localhost:8000** in your local browser. In VS Code, use **File > Open Folder** to open `deepagents`, then run these commands in **Terminal > New Terminal**. Demo mode works without a Groq key.
 
-## Groq
+## Local configuration (.env)
 
-Set `GROQ_API_KEY` securely in server environment settings before starting the server. Never put it in frontend code, commit it, or paste it into chat. Optional `GROQ_MODEL` defaults to `llama-3.3-70b-versatile`; select a model available to your account. Outbound HTTPS to `api.groq.com` must be permitted. Without a key, chat is explicitly scripted demo mode. Live Groq calls require a valid key and quota; configured does not mean verified.
+Copy `.env.example` to `.env` in the project root. In VS Code you can copy and rename the file in Explorer.
+
+Windows PowerShell:
+
+```powershell
+Copy-Item .env.example .env
+```
+
+macOS/Linux:
+
+```sh
+cp .env.example .env
+```
+
+Edit `.env`:
+
+```dotenv
+GROQ_API_KEY=your_actual_groq_key
+GROQ_MODEL=llama-3.3-70b-versatile
+DEEPAGENT_DB=deepagent.db
+```
+
+Restart the server after changing `.env`. It is loaded automatically from the project folder regardless of the working directory. Existing exported/injected environment variables take precedence; remove an old terminal value if it masks your `.env` change. `.env` and environment variants are ignored by Git; `.env.example` contains only non-secret defaults. Never commit or share your real keys.
+
+This POC uses SQLite, so no database username, password, or server is needed. `DEEPAGENT_DB` selects the SQLite file; relative paths resolve against the project folder. External database credentials will be added when an external database integration is implemented.
+
+Without a Groq key, chat uses scripted demo mode. With a key, outbound HTTPS to `api.groq.com`, a model available to your account, and sufficient quota are required. Configured does not mean verified.
 
 ## Included behavior
 
