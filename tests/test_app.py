@@ -65,7 +65,8 @@ class EnvironmentTests(unittest.TestCase):
     def test_dotenv_load_and_environment_precedence(self):
         with tempfile.TemporaryDirectory() as folder:
             root = app.Path(folder)
-            shutil.copy(app.ROOT / 'app.py', root / 'app.py')
+            for filename in ('app.py', 'knowledge.py', 'analysis_engine.py'):
+                shutil.copy(app.ROOT / filename, root / filename)
             (root / 'static').mkdir()
             (root / '.env').write_text('GROQ_API_KEY=local-test-key\nGROQ_MODEL=local-model\nDEEPAGENT_DB=local.db\n')
             environment = {k: v for k, v in os.environ.items() if k not in ('GROQ_API_KEY', 'GROQ_MODEL', 'DEEPAGENT_DB', 'PYTHON_DOTENV_DISABLED')}
