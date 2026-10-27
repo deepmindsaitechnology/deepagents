@@ -900,7 +900,8 @@ input[type="file"] {
     grid-template-columns: minmax(0, 1fr);
   }
 }
-/* Workspace organization */
+
+/* Agent list organization; the dashboard retains the earlier stylesheet. */
 .library-toolbar {
   display: flex;
   align-items: center;
@@ -923,11 +924,9 @@ input[type="file"] {
 .scope-tabs button.selected {
   background: white;
   color: var(--green);
-  box-shadow: 0 2px 5px #233c2110;
 }
 .scope-tabs span {
   font-size: 10px;
-  opacity: 0.7;
   margin-left: 7px;
 }
 .library-search {
@@ -939,7 +938,7 @@ input[type="file"] {
   margin: 0;
 }
 .agent-group {
-  margin-bottom: 32px;
+  margin-bottom: 30px;
 }
 .count-pill {
   font-size: 11px;
@@ -948,255 +947,40 @@ input[type="file"] {
   padding: 5px 9px;
   border-radius: 20px;
 }
-.agent-tags {
-  display: flex;
-  gap: 7px;
-  flex-wrap: wrap;
-  margin: 0 0 9px;
-}
-.agent-tags span {
-  font-size: 9px;
-  color: #8d9a8f;
-}
-.agent-tags span + span {
-  color: #4e8666;
-}
-.prompt-row {
+#login-screen {
+  min-height: 100vh;
   display: flex;
   align-items: center;
-  gap: 14px;
-  padding: 18px 0;
-  border-bottom: 1px solid var(--line);
+  justify-content: center;
+  padding: 24px;
 }
-.prompt-row:last-child {
-  border: 0;
+.login-card {
+  max-width: 420px;
+  width: 100%;
+  padding: 30px;
 }
-.prompt-row > div {
-  flex: 1;
-  min-width: 0;
+.login-card .brand {
+  margin-bottom: 25px;
 }
-.prompt-row code,
-.file-path {
-  font-size: 10px;
-  color: #84958a;
-  overflow-wrap: anywhere;
-  line-height: 1.8;
+.login-card button {
+  margin: 10px 0;
 }
-.prompt-row button {
-  font-size: 11px;
-  white-space: nowrap;
+#logout {
+  margin-left: auto;
+  font-size: 18px;
+  color: var(--muted);
 }
-.prompt-list {
-  padding-top: 5px;
-  padding-bottom: 5px;
-}
-.document-row {
-  display: flex;
-  gap: 10px;
-  justify-content: space-between;
-  align-items: center;
-  border-top: 1px solid var(--line);
-  padding: 12px 0;
-  font-size: 11px;
-}
-.document-row span {
-  overflow-wrap: anywhere;
-}
-.document-row a {
-  padding: 5px 9px;
-  color: var(--green);
-  background: #eff6ed;
-  border-radius: 5px;
-}
-.domain-card h3 {
-  font-size: 17px;
-}
-.domain-card {
-  min-height: 200px;
-}
-.repo-tree {
-  padding: 18px;
-  background: #f7f9f6;
-  border: 1px solid var(--line);
-  border-radius: 8px;
-  font-size: 11px;
-  line-height: 2;
-  color: #5b7767;
-}
-.builder-section {
-  border-top: 1px solid var(--line);
-  padding-top: 20px;
-  margin-top: 20px;
-}
-.profile {
-  min-width: 0;
-}
-.profile > span:nth-child(2) {
+#profile-name {
   max-width: 120px;
   overflow: hidden;
   text-overflow: ellipsis;
   white-space: nowrap;
 }
-.profile small {
+#profile-name small {
   overflow: hidden;
   text-overflow: ellipsis;
 }
-.profile .icon-button {
-  margin-left: auto;
-  font-size: 19px;
-  color: #789181;
-}
-.sidebar {
-  padding-top: 25px;
-  padding-bottom: 20px;
-}
-.sidebar .workspace {
-  margin: 22px 0 15px;
-}
-.sidebar nav {
-  gap: 2px;
-}
-.sidebar nav button {
-  padding: 10px 12px;
-}
-.sidebar-bottom {
-  padding: 13px;
-}
-.sidebar-bottom .small-orb {
-  margin-bottom: 4px;
-}
-.sidebar-bottom b {
-  font-size: 12px;
-}
-.sidebar-bottom p {
-  font-size: 10px;
-}
-.sidebar .nav-label {
-  margin: 12px 0;
-}
-.profile {
-  margin-top: 16px;
-}
-#login-screen {
-  display: grid;
-  grid-template-columns: 1.1fr 1fr;
-  min-height: 100vh;
-  background: white;
-}
-.login-story {
-  padding: 52px 10%;
-  background: #eaf2e7;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-}
-.login-story .brand {
-  margin-bottom: auto;
-  padding-bottom: 70px;
-}
-.login-story > .eyebrow {
-  color: #628069;
-}
-.login-story h1 {
-  font-size: 55px;
-  line-height: 1.13;
-  margin: 23px 0;
-  letter-spacing: -2px;
-  font-weight: 600;
-}
-.login-story > p {
-  color: #718171;
-  font-size: 14px;
-  max-width: 410px;
-  line-height: 1.9;
-}
-.login-features {
-  display: grid;
-  gap: 18px;
-  margin: 35px 0 40px;
-  color: #58745d;
-  font-size: 13px;
-}
-.login-form-panel {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  padding: 40px;
-}
-.login-card {
-  max-width: 380px;
-  width: 100%;
-}
-.login-card h2 {
-  font-size: 28px;
-  margin: 18px 0;
-}
-.login-card > p {
-  line-height: 1.9;
-}
-.google-button {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 18px;
-  border: 1px solid #dbe4dc;
-  background: white;
-  width: 100%;
-  padding: 15px;
-  margin: 30px 0 16px;
-  font-size: 13px;
-}
-.google-button b {
-  font-size: 21px;
-  color: #3978bf;
-}
-.google-button:disabled {
-  opacity: 0.45;
-  cursor: not-allowed;
-}
-#demo-login {
-  width: 100%;
-  margin: 12px 0;
-}
-.login-card > .muted:last-child {
-  margin-top: 35px;
-  font-size: 10px;
-}
-.sheet-result table td {
-  white-space: nowrap;
-}
-@media (min-width: 701px) and (max-height: 850px) {
-  .sidebar-bottom {
-    display: none;
-  }
-}
-@media (max-width: 900px) {
-  .login-story h1 {
-    font-size: 38px;
-  }
-  .login-story {
-    padding: 40px 9%;
-  }
-}
 @media (max-width: 700px) {
-  #login-screen {
-    grid-template-columns: 1fr;
-  }
-  .login-story {
-    padding: 30px;
-  }
-  .login-story .brand {
-    padding-bottom: 30px;
-  }
-  .login-story h1 {
-    font-size: 36px;
-  }
-  .login-features {
-    display: none;
-  }
-  .login-form-panel {
-    padding: 35px 25px;
-  }
   .library-search {
     width: 100%;
   }
@@ -1212,23 +996,5 @@ input[type="file"] {
   }
   .scope-tabs button {
     flex: 1;
-  }
-  .prompt-row {
-    gap: 8px;
-  }
-  .prompt-row .agent-icon {
-    display: none;
-  }
-  .prompt-row button {
-    padding: 9px;
-  }
-  .profile {
-    display: none;
-  }
-  .sidebar nav button {
-    padding: 9px;
-  }
-  .domain-card {
-    min-height: 180px;
   }
 }

@@ -24,7 +24,7 @@ Copy `.env.example` to `.env` in VS Code Explorer. Keep your real keys only in `
 python -m uvicorn app:app --reload --port 8000
 ```
 
-Open **http://localhost:8000**. Choose **Explore local demo workspace**, or configure Google login first. Restart after `.env` changes. Use one Uvicorn worker for this Excel-backed prototype.
+Open **http://localhost:8000**. The local demo opens directly to the original dashboard. Configure Google login to require account sign-in. Restart after `.env` changes. Use one Uvicorn worker for this Excel-backed prototype.
 
 ## Google login
 
@@ -34,14 +34,15 @@ Google users get separate account-owned agents, documents, runs, reports, and wo
 
 ## Workspace navigation
 
-- **Foundry Agents**: built-in templates grouped by Chat, Voice, Document, Analysis, Workflow, and Agent Team; search and filter by domain.
-- **My Agents**: your saved agents, grouped by capability, with search and domain filters.
-- **Domains**: nine business domains with links into Foundry and your own agents.
-- **Prompts**: inspect Foundry prompts and edit your own named prompt files.
-- **Playground**: test conversations, retrieval, browser voice, spreadsheet analysis, and workflow simulations.
-- **Knowledge Base**: agent-specific document collections, indexed chunk counts, and original document downloads.
-- **Runs & Reports**: actual activity and Excel/JSON analysis downloads.
-- **Settings**: account information, table counts, repository layout, and an account-scoped Excel export.
+The original dashboard layout, colors, sidebar and agent creation form are retained.
+
+- **Agent Marketplace**: Foundry templates grouped by capability, with search and domain filters.
+- **My Agents**: your agents with the same grouping and filters.
+- **Playground**: conversations, document retrieval, browser voice, spreadsheet analysis and report downloads.
+- **Knowledge Base**: documents grouped by their owning agent.
+- **Integrations**, **Activity & Analytics**, **Settings**: the original screens and navigation.
+
+Named prompt files and user agent Python extensions remain organized in the backend folders below. Edit prompts locally in VS Code or through the ownership-checked prompt API.
 
 ## Repository layout
 

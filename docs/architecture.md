@@ -6,7 +6,7 @@
 
 Each capability has its own module in `foundry_agents/`: `chat_agent.py`, `voice_agent.py`, `document_agent.py`, `analysis_agent.py`, `workflow_agent.py`, `team_agent.py`. `registry.py` maps capabilities to implementations. `catalog.json` lists the named templates. Each template has a corresponding Markdown file in `foundry_prompts/`.
 
-Foundry prompts are read-only in the web UI; edit their repository files to change defaults. Foundry sample documents are under `knowledge_base/foundry/<template>/` and are explicitly fictional. Workflow/team classes expose simulation previews; they do not execute external tasks.
+Edit Foundry prompt repository files to change their defaults. Foundry sample documents are under `knowledge_base/foundry/<template>/` and are explicitly fictional. Workflow/team classes expose simulation previews; they do not execute external tasks.
 
 ## User agents
 
@@ -37,7 +37,7 @@ class Agent(ChatAgent):
 
 Analysis classes expose `run(filename, tables)` for developer-written extensions. Returned reports must preserve the shape used by `services.analysis.make_report`. These Python modules are trusted local server code; uploaded PDFs, Word files, and spreadsheets are never imported or executed as code. Restrict filesystem access accordingly. Restart after developer changes.
 
-System prompt files are authoritative at execution. UI prompt edits also synchronize workbook instructions. Knowledge document text is reference data, not system instructions. Retrieval selects only rows with the authenticated owner ID and chosen agent ID before ranking.
+System prompt files are authoritative at execution. Prompt API edits also synchronize workbook instructions. Knowledge document text is reference data, not system instructions. Retrieval selects only rows with the authenticated owner ID and chosen agent ID before ranking.
 
 ## API groups
 

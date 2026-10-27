@@ -8,45 +8,20 @@
   </head>
   <body>
     <section id="login-screen" hidden>
-      <div class="login-story">
-        <a class="brand" href="/">✳ <span>deepagent.</span></a
-        ><span class="eyebrow">YOUR AI WORKFORCE, ORGANIZED.</span>
-        <h1>One workspace.<br />A world of expertise.</h1>
-        <p>
-          Discover purpose-built agents, bring your own knowledge, and turn
-          everyday work into meaningful outcomes.
+      <div class="panel login-card">
+        <a class="brand" href="/">✳ <span>deepagent.</span></a>
+        <h2>Sign in to your workspace</h2>
+        <p class="muted">
+          Continue with your Google account to access your agents.
         </p>
-        <div class="login-features">
-          <span>✧ Foundry agent library</span
-          ><span>▤ Your knowledge, in context</span
-          ><span>▥ Analysis you can take with you</span>
-        </div>
-      </div>
-      <div class="login-form-panel">
-        <div class="login-card">
-          <span class="eyebrow">WELCOME TO DEEPAGENT</span>
-          <h2>Your workspace awaits.</h2>
-          <p class="muted">
-            Sign in with a verified Google account to access your own agents,
-            prompts, documents, and reports.
-          </p>
-          <button class="google-button" id="google-signin">
-            <b>G</b> Continue with Google
-          </button>
-          <div id="google-setup" class="notice" hidden>
-            Google sign-in needs GOOGLE_CLIENT_ID, GOOGLE_CLIENT_SECRET, and
-            SESSION_SECRET in your .env file. See the Google login setup in
-            README.md.
-          </div>
-          <button id="demo-login" class="secondary" hidden>
-            Explore local demo workspace →
-          </button>
-          <p class="form-error" id="login-error" role="alert"></p>
-          <p class="muted">
-            Local prototype · Excel-backed storage<br />Use sample data while
-            evaluating.
-          </p>
-        </div>
+        <button class="primary" id="google-signin">Continue with Google</button>
+        <p id="google-setup" class="notice" hidden>
+          Configure Google OAuth in .env. See docs/google-login.md.
+        </p>
+        <button class="secondary" id="demo-login" hidden>
+          Continue to demo workspace
+        </button>
+        <p id="login-error" class="form-error" role="alert"></p>
       </div>
     </section>
     <div id="workspace-shell" hidden>
@@ -55,7 +30,7 @@
           >✳ <span>deepagent<span class="brand-dot">.</span></span></a
         >
         <div class="workspace">
-          D <span>Your workspace<small>Agent Foundry</small></span>
+          D <span>Demo workspace<small>Personal workspace⌄</small></span>
         </div>
         <p class="nav-label">WORKSPACE</p>
         <nav id="nav"></nav>
@@ -69,10 +44,10 @@
           <span class="avatar" id="profile-avatar">U</span
           ><span id="profile-name">Your account</span
           ><button
-            class="icon-button"
             id="logout"
-            title="Sign out"
+            class="icon-button"
             aria-label="Sign out"
+            title="Sign out"
           >
             ↪
           </button>
@@ -120,7 +95,6 @@
             maxlength="80"
             placeholder="e.g. People Operations Assistant"
         /></label>
-        <p class="eyebrow builder-section">01 · AGENT IDENTITY</p>
         <div class="form-grid">
           <label
             >Domain<select name="domain" id="domain-options"></select></label
@@ -128,7 +102,6 @@
             >Agent type<select name="type" id="type-options"></select
           ></label>
         </div>
-        <p class="eyebrow builder-section">02 · ROLE &amp; INSTRUCTIONS</p>
         <label
           >System instructions<textarea
             name="instructions"
@@ -147,7 +120,6 @@
           Its text is appended to your instructions. TXT, PDF, or Word DOCX; 5
           MB maximum.
         </p>
-        <p class="eyebrow builder-section">03 · KNOWLEDGE &amp; DATA</p>
         <div id="knowledge-fields">
           <label
             >Agent knowledge documents<input
@@ -158,7 +130,7 @@
           /></label>
           <p class="muted">
             Up to five files, 5 MB each. Text is chunked and embedded in this
-            agent’s account-owned vector index in Excel. Scanned PDFs need OCR.
+            agent’s local vector store. Scanned PDFs need OCR.
           </p>
         </div>
         <div id="dataset-fields" hidden>
@@ -176,40 +148,10 @@
         <p id="builder-error" class="form-error" role="alert"></p>
         <p class="muted">
           Instructions, extracted knowledge, and attached analysis data are
-          saved in your account’s Excel workbook records and agent folders.
+          saved locally in Excel.
         </p>
         <button class="primary" type="submit">
           Create agent &amp; prepare files ↗
-        </button>
-      </form>
-    </dialog>
-    <dialog id="prompt-dialog">
-      <form id="prompt-form">
-        <div class="dialog-heading">
-          <div>
-            <span class="eyebrow">PROMPT LIBRARY</span>
-            <h2 id="prompt-title"></h2>
-          </div>
-          <button
-            type="button"
-            id="close-prompt"
-            class="icon-button"
-            aria-label="Close prompt"
-          >
-            ×
-          </button>
-        </div>
-        <p class="file-path" id="prompt-path"></p>
-        <label
-          >Agent instructions<textarea
-            id="prompt-text"
-            rows="12"
-            maxlength="24000"
-          ></textarea>
-        </label>
-        <p class="form-error" id="prompt-error" role="alert"></p>
-        <button class="primary" type="submit" id="save-prompt">
-          Save prompt
         </button>
       </form>
     </dialog>
