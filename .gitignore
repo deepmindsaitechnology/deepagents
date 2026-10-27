@@ -7,3 +7,9 @@ __pycache__/
 .env.*
 !.env.example
 *.db-*
+# Local workbook data and account-owned artifacts
+/data/
+*.xlsx.lock
+/user_agents/*/
+/user_prompts/*/
+/knowledge_base/user_agents/*/

@@ -1,9 +1,219 @@
 <!doctype html>
-<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>DeepAgent · Agent workspace</title><link rel="stylesheet" href="/static/style.css"></head>
-<body><aside class="sidebar"><a class="brand" href="/">✳ <span>deepagent<span class="brand-dot">.</span></span></a><div class="workspace">D <span>Demo workspace<small>Personal workspace⌄</small></span></div><p class="nav-label">WORKSPACE</p><nav id="nav"></nav><div class="sidebar-bottom"><div class="small-orb">✧</div><b>Your next great hire<br>might be an agent.</b><p>One workspace. Endless possibilities.</p><button class="secondary" id="side-create">＋ Create an agent</button></div><div class="profile"><span class="avatar">JD</span><span>Demo user<small>Showcase workspace</small></span><span>⌘</span></div></aside>
-<main><header><div><span class="breadcrumb">Workspace / </span><span id="crumb">Overview</span></div><div class="header-right"><span id="provider" class="provider">● Demo mode</span><span class="avatar tiny">JD</span></div></header><div id="content"></div><footer>DEEPAGENT PLATFORM <span>Built for possibilities. Designed for people.</span><span>POC · Sample data</span></footer></main>
-<dialog id="builder"><form id="builder-form"><div class="dialog-heading"><div><span class="eyebrow">YOUR NEXT TEAMMATE</span><h2>Create an agent</h2></div><button type="button" class="icon-button" id="close-builder" aria-label="Close">×</button></div><label>Agent name<input name="name" required maxlength="80" placeholder="e.g. People Operations Assistant"></label><div class="form-grid"><label>Domain<select name="domain" id="domain-options"></select></label><label>Agent type<select name="type" id="type-options"></select></label></div><label>System instructions<textarea name="instructions" maxlength="24000" rows="3" placeholder="Describe your agent’s role, rules, and response style."></textarea></label>
-<label>System prompt document (optional)<input name="prompt_file" type="file" accept=".txt,.md,.pdf,.docx"></label><p class="muted">Its text is appended to your instructions. TXT, PDF, or Word DOCX; 5 MB maximum.</p>
-<div id="knowledge-fields"><label>Agent knowledge documents<input name="knowledge_files" type="file" multiple accept=".txt,.md,.pdf,.docx"></label><p class="muted">Up to five files, 5 MB each. Text is chunked and embedded in this agent’s local vector store. Scanned PDFs need OCR.</p></div>
-<div id="dataset-fields" hidden><label>Analysis dataset<input name="dataset_file" type="file" accept=".csv,.xlsx"></label><p class="muted">CSV or Excel XLSX; 5 MB, 10,000 rows per worksheet, 10 worksheets, 200,000 cells total. Upload now or in the playground.</p></div>
-<p id="builder-error" class="form-error" role="alert"></p><p class="muted">Instructions, extracted knowledge, and attached analysis data are saved locally in SQLite.</p><button class="primary" type="submit">Create agent &amp; prepare files ↗</button></form></dialog><div id="toast" role="status"></div><script src="/static/app.js" defer></script></body></html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>DeepAgent · Agent workspace</title>
+    <link rel="stylesheet" href="/static/style.css" />
+  </head>
+  <body>
+    <section id="login-screen" hidden>
+      <div class="login-story">
+        <a class="brand" href="/">✳ <span>deepagent.</span></a
+        ><span class="eyebrow">YOUR AI WORKFORCE, ORGANIZED.</span>
+        <h1>One workspace.<br />A world of expertise.</h1>
+        <p>
+          Discover purpose-built agents, bring your own knowledge, and turn
+          everyday work into meaningful outcomes.
+        </p>
+        <div class="login-features">
+          <span>✧ Foundry agent library</span
+          ><span>▤ Your knowledge, in context</span
+          ><span>▥ Analysis you can take with you</span>
+        </div>
+      </div>
+      <div class="login-form-panel">
+        <div class="login-card">
+          <span class="eyebrow">WELCOME TO DEEPAGENT</span>
+          <h2>Your workspace awaits.</h2>
+          <p class="muted">
+            Sign in with a verified Google account to access your own agents,
+            prompts, documents, and reports.
+          </p>
+          <button class="google-button" id="google-signin">
+            <b>G</b> Continue with Google
+          </button>
+          <div id="google-setup" class="notice" hidden>
+            Google sign-in needs GOOGLE_CLIENT_ID, GOOGLE_CLIENT_SECRET, and
+            SESSION_SECRET in your .env file. See the Google login setup in
+            README.md.
+          </div>
+          <button id="demo-login" class="secondary" hidden>
+            Explore local demo workspace →
+          </button>
+          <p class="form-error" id="login-error" role="alert"></p>
+          <p class="muted">
+            Local prototype · Excel-backed storage<br />Use sample data while
+            evaluating.
+          </p>
+        </div>
+      </div>
+    </section>
+    <div id="workspace-shell" hidden>
+      <aside class="sidebar">
+        <a class="brand" href="/"
+          >✳ <span>deepagent<span class="brand-dot">.</span></span></a
+        >
+        <div class="workspace">
+          D <span>Your workspace<small>Agent Foundry</small></span>
+        </div>
+        <p class="nav-label">WORKSPACE</p>
+        <nav id="nav"></nav>
+        <div class="sidebar-bottom">
+          <div class="small-orb">✧</div>
+          <b>Your next great hire<br />might be an agent.</b>
+          <p>One workspace. Endless possibilities.</p>
+          <button class="secondary" id="side-create">＋ Create an agent</button>
+        </div>
+        <div class="profile">
+          <span class="avatar" id="profile-avatar">U</span
+          ><span id="profile-name">Your account</span
+          ><button
+            class="icon-button"
+            id="logout"
+            title="Sign out"
+            aria-label="Sign out"
+          >
+            ↪
+          </button>
+        </div>
+      </aside>
+      <main>
+        <header>
+          <div>
+            <span class="breadcrumb">Workspace / </span
+            ><span id="crumb">Overview</span>
+          </div>
+          <div class="header-right">
+            <span id="provider" class="provider">● Demo mode</span
+            ><span class="avatar tiny" id="header-avatar">U</span>
+          </div>
+        </header>
+        <div id="content"></div>
+        <footer>
+          DEEPAGENT PLATFORM
+          <span>Built for possibilities. Designed for people.</span
+          ><span>POC · Sample data</span>
+        </footer>
+      </main>
+    </div>
+    <dialog id="builder">
+      <form id="builder-form">
+        <div class="dialog-heading">
+          <div>
+            <span class="eyebrow">YOUR NEXT TEAMMATE</span>
+            <h2>Create an agent</h2>
+          </div>
+          <button
+            type="button"
+            class="icon-button"
+            id="close-builder"
+            aria-label="Close"
+          >
+            ×
+          </button>
+        </div>
+        <label
+          >Agent name<input
+            name="name"
+            required
+            maxlength="80"
+            placeholder="e.g. People Operations Assistant"
+        /></label>
+        <p class="eyebrow builder-section">01 · AGENT IDENTITY</p>
+        <div class="form-grid">
+          <label
+            >Domain<select name="domain" id="domain-options"></select></label
+          ><label
+            >Agent type<select name="type" id="type-options"></select
+          ></label>
+        </div>
+        <p class="eyebrow builder-section">02 · ROLE &amp; INSTRUCTIONS</p>
+        <label
+          >System instructions<textarea
+            name="instructions"
+            maxlength="24000"
+            rows="3"
+            placeholder="Describe your agent’s role, rules, and response style."
+          ></textarea>
+        </label>
+        <label
+          >System prompt document (optional)<input
+            name="prompt_file"
+            type="file"
+            accept=".txt,.md,.pdf,.docx"
+        /></label>
+        <p class="muted">
+          Its text is appended to your instructions. TXT, PDF, or Word DOCX; 5
+          MB maximum.
+        </p>
+        <p class="eyebrow builder-section">03 · KNOWLEDGE &amp; DATA</p>
+        <div id="knowledge-fields">
+          <label
+            >Agent knowledge documents<input
+              name="knowledge_files"
+              type="file"
+              multiple
+              accept=".txt,.md,.pdf,.docx"
+          /></label>
+          <p class="muted">
+            Up to five files, 5 MB each. Text is chunked and embedded in this
+            agent’s account-owned vector index in Excel. Scanned PDFs need OCR.
+          </p>
+        </div>
+        <div id="dataset-fields" hidden>
+          <label
+            >Analysis dataset<input
+              name="dataset_file"
+              type="file"
+              accept=".csv,.xlsx"
+          /></label>
+          <p class="muted">
+            CSV or Excel XLSX; 5 MB, 10,000 rows per worksheet, 10 worksheets,
+            200,000 cells total. Upload now or in the playground.
+          </p>
+        </div>
+        <p id="builder-error" class="form-error" role="alert"></p>
+        <p class="muted">
+          Instructions, extracted knowledge, and attached analysis data are
+          saved in your account’s Excel workbook records and agent folders.
+        </p>
+        <button class="primary" type="submit">
+          Create agent &amp; prepare files ↗
+        </button>
+      </form>
+    </dialog>
+    <dialog id="prompt-dialog">
+      <form id="prompt-form">
+        <div class="dialog-heading">
+          <div>
+            <span class="eyebrow">PROMPT LIBRARY</span>
+            <h2 id="prompt-title"></h2>
+          </div>
+          <button
+            type="button"
+            id="close-prompt"
+            class="icon-button"
+            aria-label="Close prompt"
+          >
+            ×
+          </button>
+        </div>
+        <p class="file-path" id="prompt-path"></p>
+        <label
+          >Agent instructions<textarea
+            id="prompt-text"
+            rows="12"
+            maxlength="24000"
+          ></textarea>
+        </label>
+        <p class="form-error" id="prompt-error" role="alert"></p>
+        <button class="primary" type="submit" id="save-prompt">
+          Save prompt
+        </button>
+      </form>
+    </dialog>
+    <div id="toast" role="status"></div>
+    <script src="/static/app.js" defer></script>
+  </body>
+</html>

@@ -1,0 +1,123 @@
+[
+  {
+    "name": "HR Policy Assistant",
+    "domain": "HR",
+    "type": "Chat",
+    "description": "Give your people clear answers about policies, leave, and everyday work.",
+    "status": "Demo ready",
+    "template_id": "hr_policy_assistant",
+    "source": "foundry",
+    "prompt_path": "foundry_prompts/hr_policy_assistant.md",
+    "code_path": "foundry_agents/chat_agent.py"
+  },
+  {
+    "name": "Customer Care",
+    "domain": "Customer Support",
+    "type": "Chat",
+    "description": "A helpful first point of contact for product questions and support requests.",
+    "status": "Demo ready",
+    "template_id": "customer_care",
+    "source": "foundry",
+    "prompt_path": "foundry_prompts/customer_care.md",
+    "code_path": "foundry_agents/chat_agent.py"
+  },
+  {
+    "name": "Business Analyst",
+    "domain": "Finance",
+    "type": "Analysis",
+    "description": "Turn your CSV data into clear metrics and useful business insights.",
+    "status": "Working",
+    "template_id": "business_analyst",
+    "source": "foundry",
+    "prompt_path": "foundry_prompts/business_analyst.md",
+    "code_path": "foundry_agents/analysis_agent.py"
+  },
+  {
+    "name": "Voice Concierge",
+    "domain": "Real Estate",
+    "type": "Voice",
+    "description": "Explore natural conversations for property enquiries and lead qualification.",
+    "status": "Browser demo",
+    "template_id": "voice_concierge",
+    "source": "foundry",
+    "prompt_path": "foundry_prompts/voice_concierge.md",
+    "code_path": "foundry_agents/voice_agent.py"
+  },
+  {
+    "name": "Knowledge Companion",
+    "domain": "Healthcare",
+    "type": "Document",
+    "description": "Explore answers from your own reference text with a source shown.",
+    "status": "Demo ready",
+    "template_id": "knowledge_companion",
+    "source": "foundry",
+    "prompt_path": "foundry_prompts/knowledge_companion.md",
+    "code_path": "foundry_agents/document_agent.py"
+  },
+  {
+    "name": "Operations Autopilot",
+    "domain": "Logistics",
+    "type": "Workflow",
+    "description": "Preview a shipment exception workflow with human approval built in.",
+    "status": "Simulation",
+    "template_id": "operations_autopilot",
+    "source": "foundry",
+    "prompt_path": "foundry_prompts/operations_autopilot.md",
+    "code_path": "foundry_agents/workflow_agent.py"
+  },
+  {
+    "name": "Talent Scout",
+    "domain": "HR",
+    "type": "Workflow",
+    "description": "Showcase candidate screening and interview scheduling workflows.",
+    "status": "Simulation",
+    "template_id": "talent_scout",
+    "source": "foundry",
+    "prompt_path": "foundry_prompts/talent_scout.md",
+    "code_path": "foundry_agents/workflow_agent.py"
+  },
+  {
+    "name": "Sales Development",
+    "domain": "Sales & Marketing",
+    "type": "Voice",
+    "description": "Showcase lead conversations and follow-up planning.",
+    "status": "Browser demo",
+    "template_id": "sales_development",
+    "source": "foundry",
+    "prompt_path": "foundry_prompts/sales_development.md",
+    "code_path": "foundry_agents/voice_agent.py"
+  },
+  {
+    "name": "Quality Inspector",
+    "domain": "Manufacturing",
+    "type": "Analysis",
+    "description": "Explore numeric quality and production records from a CSV file.",
+    "status": "Working",
+    "template_id": "quality_inspector",
+    "source": "foundry",
+    "prompt_path": "foundry_prompts/quality_inspector.md",
+    "code_path": "foundry_agents/analysis_agent.py"
+  },
+  {
+    "name": "Claims Companion",
+    "domain": "Banking & Insurance",
+    "type": "Document",
+    "description": "Explore policy reference text. Professional review remains essential.",
+    "status": "Demo ready",
+    "template_id": "claims_companion",
+    "source": "foundry",
+    "prompt_path": "foundry_prompts/claims_companion.md",
+    "code_path": "foundry_agents/document_agent.py"
+  },
+  {
+    "name": "Research Team",
+    "domain": "Finance",
+    "type": "Agent Team",
+    "description": "Preview researcher, analyst, and reviewer handoffs in one workspace.",
+    "status": "Simulation",
+    "template_id": "research_team",
+    "source": "foundry",
+    "prompt_path": "foundry_prompts/research_team.md",
+    "code_path": "foundry_agents/team_agent.py"
+  }
+]
