@@ -1,11 +1,11 @@
 import importlib.util
-from platform_core.config import ROOT
-from foundry_agents.chat_agent import ChatAgent
-from foundry_agents.voice_agent import VoiceAgent
-from foundry_agents.document_agent import DocumentAgent
-from foundry_agents.analysis_agent import AnalysisAgent
-from foundry_agents.workflow_agent import WorkflowAgent
-from foundry_agents.team_agent import TeamAgent
+from backend.core.config import ROOT
+from foundry_agents.capabilities.chat_agent import ChatAgent
+from foundry_agents.capabilities.voice_agent import VoiceAgent
+from foundry_agents.capabilities.document_agent import DocumentAgent
+from foundry_agents.capabilities.analysis_agent import AnalysisAgent
+from foundry_agents.capabilities.workflow_agent import WorkflowAgent
+from foundry_agents.capabilities.team_agent import TeamAgent
 
 HANDLERS = {
     "Chat": ChatAgent,
@@ -27,16 +27,16 @@ MODULES = {
 
 def handler_for(agent):
     base = HANDLERS[agent["type"]]
-    if agent.get("source") == "user" and agent.get("code_path"):
+    if agent.get("source") in ("user", "foundry") and agent.get("code_path"):
         path = (ROOT / agent["code_path"]).resolve()
         if (
-            not path.is_relative_to((ROOT / "user_agents").resolve())
+            not path.is_relative_to((ROOT / ("user_agents" if agent["source"] == "user" else "foundry_agents")).resolve())
             or path.suffix != ".py"
         ):
             raise ValueError("Invalid agent extension path.")
         if path.exists():
             spec = importlib.util.spec_from_file_location(
-                f"user_agent_{agent['id']}", path
+                f"managed_agent_{agent.get('id', agent.get('template_id'))}", path
             )
             module = importlib.util.module_from_spec(spec)
             spec.loader.exec_module(module)

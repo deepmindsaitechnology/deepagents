@@ -1,11 +1,11 @@
 # Excel storage
 
-`DEEPAGENT_WORKBOOK` defaults to `data/platform.xlsx`. `ExcelStore` is the only runtime table repository. There is no runtime SQLite database; SQLite is used solely by the optional read-only legacy importer.
+`DEEPAGENT_WORKBOOK` defaults to `database/data/platform.xlsx`. `ExcelStore` is the only runtime table repository. There is no runtime SQLite database; SQLite is used solely by the optional read-only legacy importer.
 
 | Worksheet | Contents |
 |---|---|
 | users | Verified account identity and profile; no OAuth tokens |
-| agents | Account, agent metadata, instructions and managed file paths |
+| agents | Account, template origin, domain/capability metadata, instructions and managed file paths |
 | runs | Account-owned execution history |
 | knowledge_documents | Original document metadata, paths and chunk counts |
 | knowledge_chunks | Extracted chunks and normalized TF-IDF vectors |
@@ -29,13 +29,13 @@ Automatic import runs only when the destination has no agents and the source has
 To import an old database into a separate, empty workbook:
 
 ```sh
-python scripts/import_legacy.py --source deepagent.db --workbook data/imported-platform.xlsx
+python scripts/import_legacy.py --source deepagent.db --workbook database/data/imported-platform.xlsx
 ```
 
 Then choose that workbook in `.env` if desired. An existing destination with agents is not merged or overwritten.
 
 ## Backups and future databases
 
-Stop the server before backing up the live workbook, `user_agents/`, `user_prompts/`, and `knowledge_base/user_agents/` together. Keep `.env` in a separate secure backup. Prompts can be edited through the ownership-checked PUT /api/agents/{id}/prompt API (updates file and workbook) or locally in VS Code (file content takes precedence at execution).
+Stop the server before backing up the live workbook and `user_agents/` together. Back up `foundry_agents/` too when you customize templates. Keep old `user_prompts/` and `knowledge_base/user_agents/` folders until you have verified migration. Keep `.env` in a separate secure backup. Prompts can be edited through the ownership-checked PUT /api/agents/{id}/prompt API (updates file and workbook) or locally in VS Code (file content takes precedence at execution).
 
 A future database adapter can replace `ExcelStore.transaction()` and its `all`, `one`, `insert`, `update` operations. Agents and services do not embed SQL. Workbook schema is also available as `docs/platform_schema.xlsx`. This is account isolation for individual workspaces, not a company/role permission system.

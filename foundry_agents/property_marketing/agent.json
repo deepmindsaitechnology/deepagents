@@ -1,0 +1,32 @@
+{
+  "name": "Property Marketing Agent",
+  "domain_id": "real_estate",
+  "capabilities": [
+    "creative",
+    "video",
+    "communication"
+  ],
+  "phase": 3,
+  "status": "Configuration draft",
+  "related_template": null,
+  "template_id": "property_marketing",
+  "source": "foundry",
+  "type": "Chat",
+  "primary_capability": "creative",
+  "domain": "Real Estate",
+  "description": "Property Marketing Agent for Real Estate. Combines DeepCreate, DeepVideo, DeepConnect.",
+  "execution_status": "draft",
+  "prompt_path": "foundry_agents/property_marketing/prompts/system.md",
+  "code_path": "foundry_agents/property_marketing/agent.py",
+  "knowledge_path": "foundry_agents/property_marketing/knowledge",
+  "tools": [],
+  "integrations": [
+    "image_generator",
+    "video_generator",
+    "whatsapp"
+  ],
+  "channels": [
+    "whatsapp"
+  ],
+  "approval_required": true
+}

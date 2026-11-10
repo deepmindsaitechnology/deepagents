@@ -1,0 +1,28 @@
+{
+  "name": "Product Marketing Creator",
+  "domain_id": "retail",
+  "capabilities": [
+    "creative",
+    "video"
+  ],
+  "phase": 3,
+  "status": "Configuration draft",
+  "related_template": null,
+  "template_id": "product_marketing",
+  "source": "foundry",
+  "type": "Chat",
+  "primary_capability": "creative",
+  "domain": "Retail & E-commerce",
+  "description": "Product Marketing Creator for Retail & E-commerce. Combines DeepCreate, DeepVideo.",
+  "execution_status": "draft",
+  "prompt_path": "foundry_agents/product_marketing/prompts/system.md",
+  "code_path": "foundry_agents/product_marketing/agent.py",
+  "knowledge_path": "foundry_agents/product_marketing/knowledge",
+  "tools": [],
+  "integrations": [
+    "image_generator",
+    "video_generator"
+  ],
+  "channels": [],
+  "approval_required": true
+}

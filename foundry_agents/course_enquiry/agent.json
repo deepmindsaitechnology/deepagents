@@ -1,0 +1,30 @@
+{
+  "name": "Course Enquiry Agent",
+  "domain_id": "education",
+  "capabilities": [
+    "chat",
+    "voice"
+  ],
+  "phase": 2,
+  "status": "Configuration draft",
+  "related_template": null,
+  "template_id": "course_enquiry",
+  "source": "foundry",
+  "type": "Chat",
+  "primary_capability": "chat",
+  "domain": "Education & EdTech",
+  "description": "Course Enquiry Agent for Education & EdTech. Combines DeepChat, DeepVoice.",
+  "execution_status": "draft",
+  "prompt_path": "foundry_agents/course_enquiry/prompts/system.md",
+  "code_path": "foundry_agents/course_enquiry/agent.py",
+  "knowledge_path": "foundry_agents/course_enquiry/knowledge",
+  "tools": [
+    "browser_voice"
+  ],
+  "integrations": [
+    "groq",
+    "vapi"
+  ],
+  "channels": [],
+  "approval_required": true
+}

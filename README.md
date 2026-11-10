@@ -34,47 +34,60 @@ Google users get separate account-owned agents, documents, runs, reports, and wo
 
 ## Workspace navigation
 
-The original dashboard layout, colors, sidebar and agent creation form are retained.
+The interface follows the proposal's capabilities → business domains → solution templates model. See [suite blueprint and implementation scope](docs/suite-blueprint.md). The marketplace lists all 17 proposal templates with readiness status; **Manage workspace → Suite roadmap** shows the 14 capabilities, 12 domains and 17 proposed solutions with their current status.
 
-- **Agent Marketplace**: Foundry templates grouped by capability, with search and domain filters.
-- **My Agents**: your agents with the same grouping and filters.
-- **Playground**: conversations, document retrieval, browser voice, spreadsheet analysis and report downloads.
-- **Knowledge Base**: documents grouped by their owning agent.
-- **Integrations**, **Activity & Analytics**, **Settings**: the original screens and navigation.
+Daily work is organized as **Home → Marketplace / My Agents → Test an agent**, with **Knowledge & data** alongside. Agent creation has four steps: choose, system prompt, knowledge, and tools/integrations. All 14 PDF agent categories, 12 domains and 17 templates are selectable. Templates with unimplemented services save as configuration drafts. Additional workspace tools are under an expandable navigation group.
+
+The original visual style is retained, with fewer items shown at once.
+
+- **Marketplace**: solution templates with combined search, domain and capability filters.
+- **My Agents**: account-owned agents with the same discovery controls.
+- **Test an agent**: conversations, document retrieval, browser voice, spreadsheet analysis and reports.
+- **Knowledge & data**: documents and datasets grouped by their owning agent.
+- **Manage workspace**: integration setup, activity, suite roadmap and settings.
 
 Named prompt files and user agent Python extensions remain organized in the backend folders below. Edit prompts locally in VS Code or through the ownership-checked prompt API.
 
 ## Repository layout
 
 ```text
-app.py                         Application entry point
-api/                           Authentication and feature routes
-platform_core/                 Configuration and Excel repository adapter
-services/                      Documents, retrieval, analysis, Groq, migration
-foundry_agents/                Separate Python module per agent capability
+app.py                         Compatible Uvicorn entry point
+backend/
+  app.py                       Application assembly
+  api/                         HTTP routes and account checks
+  core/                        Configuration
+  services/                    Documents, retrieval, analysis and migration
+frontend/static/               Original HTML/CSS/JS, same design
+integrations/                  Groq and Google provider integration
+database/
+  store.py                     Excel repository adapter
+  inputs/                      Optional read-only input databases
+  data/platform.xlsx           Runtime workbook (generated, ignored)
+foundry_agents/
+  capabilities/                Shared agent base implementations
   catalog.json                 Built-in template metadata
-foundry_prompts/               One named Markdown prompt per Foundry template
-user_agents/<account>/<agent>/ Agent manifest and named editable Python module
-user_prompts/<account>/        One named Markdown prompt per user agent
-knowledge_base/
-  foundry/<template>/          Shared sample knowledge
-  user_agents/<account>/<agent>/
-    documents/                Original knowledge files
-    extracted/                Extracted text
-    datasets/                 Original analysis spreadsheets
-    indexes/                  Reserved for a future vector database
-data/platform.xlsx            All application tables (generated, ignored)
-docs/                         Google setup, storage, architecture, blank schema
-tests/                        Functional and account isolation tests
+  <template-name>/
+    agent.json
+    agent.py
+    prompts/system.md
+    knowledge/{documents,extracted,datasets,indexes}/
+user_agents/<account>/<agent-name>_<id>/
+  agent.json
+  agent.py
+  prompts/system.md
+  prompts/uploads/             Original uploaded system-prompt documents
+  knowledge/{documents,extracted,datasets,indexes}/
+docs/                          Setup, storage and architecture
+tests/                         Functional and account isolation tests
 ```
 
-These are folders in one repository, not Git submodules. User artifacts and credentials are ignored by Git. Each agent name is normalized into a readable filename with an ID suffix; account folders use a stable hash, so duplicate names do not collide.
+These are folders in one repository, not Git submodules. User artifacts and credentials are ignored by Git. Each agent name is normalized into a readable folder name with an ID suffix; account folders use a stable hash, so duplicate names do not collide.
 
 ## Create agents
 
 Choose **Create agent**. Enter name, domain and capability. Type system instructions or upload a TXT/MD, selectable-text PDF, or Word DOCX prompt. Uploaded prompt text is appended to the typed instructions.
 
-For conversational agents, attach up to five knowledge documents. Extracted chunks and normalized **TF-IDF embeddings** are stored in Excel. Retrieval uses cosine similarity and returns sources with filenames and PDF page references. This is term-based retrieval, not neural semantic search; no extra embedding API or model download is required. Scanned PDFs require OCR first. Legacy DOC must be converted to DOCX. Word extraction covers paragraphs and tables.
+For conversational agents, attach up to five knowledge documents. Extracted chunks and normalized **TF-IDF embeddings** are retained in Excel and indexed in each agent?s `knowledge/indexes/knowledge.db` SQLite database. Sparse vector search uses indexed term postings and cosine similarity, then query-term and phrase matching to rank short excerpts with filenames and page references. New uploads build the database immediately; existing agents build or refresh it automatically on their next question. The SQLite database is a rebuildable local index, isolated by account and agent. This is term-based retrieval, not neural semantic search; no extra embedding API or model download is required. Scanned PDFs require OCR first. Legacy DOC must be converted to DOCX. Word extraction covers paragraphs and tables.
 
 For **Analysis** agents, attach CSV or Excel XLSX during creation or upload in Playground. Run **Analyze attached data** for persistent datasets. Numeric totals, averages, median, min/max, missing and unique counts are calculated for every populated worksheet. Download an Excel or JSON report with statistics and the first eight rows per worksheet. Excel formulas are not recalculated; cached values are read. Analysis uses fixed statistics, not generated Python execution or arbitrary natural-language analysis.
 
@@ -84,7 +97,7 @@ Limits: 5 MB per file, 300,000 extracted characters per document, 150 PDF pages,
 
 On first startup, the old `deepagent.db` (or `DEEPAGENT_DB`) is imported read-only into a fresh workbook under the **demo** account. The original SQLite file is never removed or changed. Existing workbook agents prevent automatic reimport. Old original uploads may be unavailable because the earlier version only retained extracted chunks.
 
-Google accounts do not automatically inherit shared demo records. This prevents accidental cross-account sharing. See [storage and migration](docs/storage.md) for the tables, schema, file locking, long-value handling, and backup guidance. `docs/platform_schema.xlsx` is an empty schema workbook for reference; the live workbook is generated at startup.
+Google accounts do not automatically inherit shared demo records. This prevents accidental cross-account sharing. The previous default workbook and split agent files are copied into the new layout automatically at startup; original files remain as backups. See [architecture](docs/architecture.md) for the migration details. See [storage and migration](docs/storage.md) for the tables, schema, file locking, long-value handling, and backup guidance. `docs/platform_schema.xlsx` is an empty schema workbook for reference; the live workbook is generated at startup.
 
 ## Developer extensions
 
@@ -94,7 +107,7 @@ See [architecture and agent extensions](docs/architecture.md). Each created agen
 
 ```sh
 python -m unittest discover -s tests -v
-node --check static/app.js
+node --check frontend/static/app.js
 ```
 
 Tests use temporary Excel workbooks and file folders. Groq and Google provider responses are mocked; tests do not claim live provider validation. Real OAuth needs the configured Google project, and live Groq needs a valid key, supported model and quota.
@@ -102,3 +115,5 @@ Tests use temporary Excel workbooks and file folders. Groq and Google provider r
 ## Prototype boundaries
 
 Excel is suitable for local or small-scale evaluation, not concurrent enterprise production. Keep the workbook closed in Excel while the app writes it. Shared company workspaces, role administration, billing, OCR, neural semantic embeddings, telephone calls and external business integrations remain future work. Browser dictation/read-aloud depends on browser support and microphone permission; speech services may process audio remotely. Workflow/team previews are clearly marked simulations. Use sample data while evaluating.
+
+Chat answers are requested in 1?3 sentences. If the AI provider times out (15-second request deadline), document questions return the best local excerpt. Without a Groq key, document lookup returns one excerpt; general AI answers require Groq. SQLite uses Python?s standard library, with no extra service or model download.

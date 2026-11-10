@@ -1,0 +1,16 @@
+{
+  "name": "Operations Autopilot",
+  "domain": "Logistics",
+  "type": "Workflow",
+  "description": "Preview a shipment exception workflow with human approval built in.",
+  "status": "Simulation",
+  "template_id": "operations_autopilot",
+  "source": "foundry",
+  "prompt_path": "foundry_agents/operations_autopilot/prompts/system.md",
+  "code_path": "foundry_agents/operations_autopilot/agent.py",
+  "knowledge_path": "foundry_agents/operations_autopilot/knowledge",
+  "domain_id": "logistics",
+  "capabilities": [
+    "automation"
+  ]
+}

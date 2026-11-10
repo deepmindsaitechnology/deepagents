@@ -1,0 +1,29 @@
+{
+  "name": "Employee Knowledge Assistant",
+  "domain_id": "hr",
+  "capabilities": [
+    "chat",
+    "knowledge"
+  ],
+  "phase": 1,
+  "status": "Ready to configure",
+  "related_template": "hr_policy_assistant",
+  "template_id": "employee_knowledge",
+  "source": "foundry",
+  "type": "Chat",
+  "primary_capability": "chat",
+  "domain": "HR & Recruitment",
+  "description": "Employee Knowledge Assistant for HR & Recruitment. Combines DeepChat, DeepKnowledge.",
+  "execution_status": "ready",
+  "prompt_path": "foundry_agents/employee_knowledge/prompts/system.md",
+  "code_path": "foundry_agents/employee_knowledge/agent.py",
+  "knowledge_path": "foundry_agents/employee_knowledge/knowledge",
+  "tools": [
+    "knowledge_lookup"
+  ],
+  "integrations": [
+    "groq"
+  ],
+  "channels": [],
+  "approval_required": true
+}

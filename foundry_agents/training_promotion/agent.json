@@ -1,0 +1,32 @@
+{
+  "name": "Training Promotion Creator",
+  "domain_id": "education",
+  "capabilities": [
+    "creative",
+    "video",
+    "communication"
+  ],
+  "phase": 3,
+  "status": "Configuration draft",
+  "related_template": null,
+  "template_id": "training_promotion",
+  "source": "foundry",
+  "type": "Chat",
+  "primary_capability": "creative",
+  "domain": "Education & EdTech",
+  "description": "Training Promotion Creator for Education & EdTech. Combines DeepCreate, DeepVideo, DeepConnect.",
+  "execution_status": "draft",
+  "prompt_path": "foundry_agents/training_promotion/prompts/system.md",
+  "code_path": "foundry_agents/training_promotion/agent.py",
+  "knowledge_path": "foundry_agents/training_promotion/knowledge",
+  "tools": [],
+  "integrations": [
+    "image_generator",
+    "video_generator",
+    "whatsapp"
+  ],
+  "channels": [
+    "whatsapp"
+  ],
+  "approval_required": true
+}

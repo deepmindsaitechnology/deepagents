@@ -1,0 +1,16 @@
+{
+  "name": "Voice Concierge",
+  "domain": "Real Estate",
+  "type": "Voice",
+  "description": "Explore natural conversations for property enquiries and lead qualification.",
+  "status": "Browser demo",
+  "template_id": "voice_concierge",
+  "source": "foundry",
+  "prompt_path": "foundry_agents/voice_concierge/prompts/system.md",
+  "code_path": "foundry_agents/voice_concierge/agent.py",
+  "knowledge_path": "foundry_agents/voice_concierge/knowledge",
+  "domain_id": "real_estate",
+  "capabilities": [
+    "voice"
+  ]
+}

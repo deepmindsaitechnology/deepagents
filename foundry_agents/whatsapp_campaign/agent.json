@@ -1,0 +1,32 @@
+{
+  "name": "WhatsApp Campaign Assistant",
+  "domain_id": "sales",
+  "capabilities": [
+    "creative",
+    "communication",
+    "automation"
+  ],
+  "phase": 3,
+  "status": "Configuration draft",
+  "related_template": null,
+  "template_id": "whatsapp_campaign",
+  "source": "foundry",
+  "type": "Chat",
+  "primary_capability": "creative",
+  "domain": "Sales & Marketing",
+  "description": "WhatsApp Campaign Assistant for Sales & Marketing. Combines DeepCreate, DeepConnect, DeepFlow.",
+  "execution_status": "draft",
+  "prompt_path": "foundry_agents/whatsapp_campaign/prompts/system.md",
+  "code_path": "foundry_agents/whatsapp_campaign/agent.py",
+  "knowledge_path": "foundry_agents/whatsapp_campaign/knowledge",
+  "tools": [],
+  "integrations": [
+    "image_generator",
+    "whatsapp",
+    "n8n"
+  ],
+  "channels": [
+    "whatsapp"
+  ],
+  "approval_required": true
+}

@@ -1,0 +1,17 @@
+{
+  "name": "Knowledge Companion",
+  "domain": "Healthcare",
+  "type": "Document",
+  "description": "Explore answers from your own reference text with a source shown.",
+  "status": "Demo ready",
+  "template_id": "knowledge_companion",
+  "source": "foundry",
+  "prompt_path": "foundry_agents/knowledge_companion/prompts/system.md",
+  "code_path": "foundry_agents/knowledge_companion/agent.py",
+  "knowledge_path": "foundry_agents/knowledge_companion/knowledge",
+  "domain_id": "healthcare",
+  "capabilities": [
+    "documents",
+    "knowledge"
+  ]
+}

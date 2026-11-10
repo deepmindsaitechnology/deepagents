@@ -1,0 +1,17 @@
+{
+  "name": "Customer Care",
+  "domain": "Customer Support",
+  "type": "Chat",
+  "description": "A helpful first point of contact for product questions and support requests.",
+  "status": "Demo ready",
+  "template_id": "customer_care",
+  "source": "foundry",
+  "prompt_path": "foundry_agents/customer_care/prompts/system.md",
+  "code_path": "foundry_agents/customer_care/agent.py",
+  "knowledge_path": "foundry_agents/customer_care/knowledge",
+  "domain_id": "retail",
+  "capabilities": [
+    "chat",
+    "knowledge"
+  ]
+}

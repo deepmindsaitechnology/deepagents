@@ -1,0 +1,32 @@
+{
+  "name": "Guest Service Assistant",
+  "domain_id": "hospitality",
+  "capabilities": [
+    "chat",
+    "voice",
+    "automation"
+  ],
+  "phase": 2,
+  "status": "Configuration draft",
+  "related_template": null,
+  "template_id": "guest_service",
+  "source": "foundry",
+  "type": "Chat",
+  "primary_capability": "chat",
+  "domain": "Travel & Hospitality",
+  "description": "Guest Service Assistant for Travel & Hospitality. Combines DeepChat, DeepVoice, DeepFlow.",
+  "execution_status": "draft",
+  "prompt_path": "foundry_agents/guest_service/prompts/system.md",
+  "code_path": "foundry_agents/guest_service/agent.py",
+  "knowledge_path": "foundry_agents/guest_service/knowledge",
+  "tools": [
+    "browser_voice"
+  ],
+  "integrations": [
+    "groq",
+    "n8n",
+    "vapi"
+  ],
+  "channels": [],
+  "approval_required": true
+}

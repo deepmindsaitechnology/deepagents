@@ -65,7 +65,7 @@ class PlatformTests(PlatformCase):
                 result = self.client.post(
                     "/api/chat",
                     json={
-                        "message": "Hello",
+                        "message": "Explain gravity",
                         "history": [{"role": "system", "content": "invalid"}],
                     },
                 ).json()
@@ -81,7 +81,7 @@ class PlatformTests(PlatformCase):
                     post.return_value = httpx.Response(
                         status, text="sensitive upstream content"
                     )
-                    response = self.client.post("/api/chat", json={"message": "Hello"})
+                    response = self.client.post("/api/chat", json={"message": "Explain gravity"})
                     self.assertEqual(response.status_code, 502)
                     self.assertIn(expected, response.json()["detail"])
                     self.assertIn(str(status), response.json()["detail"])
@@ -93,12 +93,12 @@ class EnvironmentTests(unittest.TestCase):
     def test_dotenv_load_and_environment_precedence(self):
         with tempfile.TemporaryDirectory() as folder:
             root = Path(folder)
-            (root / "platform_core").mkdir()
-            from platform_core import config
+            (root / "backend/core").mkdir(parents=True)
+            from backend.core import config
 
             shutil.copy(
-                config.ROOT / "platform_core/config.py",
-                root / "platform_core/config.py",
+                config.ROOT / "backend/core/config.py",
+                root / "backend/core/config.py",
             )
             (root / ".env").write_text(
                 "GROQ_API_KEY=local-test-key\nGROQ_MODEL=local-model\nDEEPAGENT_WORKBOOK=local.xlsx\n"
@@ -116,7 +116,7 @@ class EnvironmentTests(unittest.TestCase):
                     "PYTHON_DOTENV_DISABLED",
                 )
             }
-            script = "import platform_core.config as c, os; assert os.environ['GROQ_API_KEY']=='local-test-key'; assert c.WORKBOOK==c.ROOT/'local.xlsx'"
+            script = "import backend.core.config as c, os; assert os.environ['GROQ_API_KEY']=='local-test-key'; assert c.WORKBOOK==c.ROOT/'local.xlsx'"
             subprocess.run(
                 [sys.executable, "-c", script], cwd=root, env=environment, check=True
             )
@@ -125,7 +125,7 @@ class EnvironmentTests(unittest.TestCase):
                 [
                     sys.executable,
                     "-c",
-                    "import platform_core.config, os; assert os.environ['GROQ_API_KEY']=='injected-test-key'",
+                    "import backend.core.config, os; assert os.environ['GROQ_API_KEY']=='injected-test-key'",
                 ],
                 cwd=root,
                 env=environment,

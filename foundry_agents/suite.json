@@ -1,0 +1,629 @@
+{
+  "version": "1.0",
+  "capabilities": [
+    {
+      "id": "chat",
+      "product": "DeepChat",
+      "name": "Chat Agents",
+      "group": "Interaction & communication",
+      "status": "Available",
+      "scope": "Conversational assistance with Groq or local reference lookup.",
+      "phase": 1,
+      "suggested_connections": [
+        "groq"
+      ],
+      "short_name": "Chat"
+    },
+    {
+      "id": "voice",
+      "product": "DeepVoice",
+      "name": "Voice Agents",
+      "group": "Interaction & communication",
+      "status": "Browser demo",
+      "scope": "Browser dictation and read-aloud; telephone calling is planned.",
+      "phase": 1,
+      "suggested_connections": [
+        "browser_voice"
+      ],
+      "short_name": "Voice"
+    },
+    {
+      "id": "analytics",
+      "product": "DeepAnalytics",
+      "name": "Data Analytics Agents",
+      "group": "Intelligence & knowledge",
+      "status": "Available",
+      "scope": "Calculated CSV/XLSX reports; database queries and Text2SQL are planned.",
+      "phase": 1,
+      "suggested_connections": [
+        "spreadsheet_analysis"
+      ],
+      "short_name": "Analytics"
+    },
+    {
+      "id": "documents",
+      "product": "DeepDocs",
+      "name": "Document Intelligence",
+      "group": "Business execution",
+      "status": "Available",
+      "scope": "TXT, MD, PDF and DOCX extraction; scanned-document OCR is planned.",
+      "phase": 1,
+      "suggested_connections": [
+        "knowledge_lookup"
+      ],
+      "short_name": "Documents"
+    },
+    {
+      "id": "automation",
+      "product": "DeepFlow",
+      "name": "Workflow Automation",
+      "group": "Business execution",
+      "status": "Simulation",
+      "scope": "Review a sample approval flow; external execution is planned.",
+      "phase": 2,
+      "suggested_connections": [
+        "n8n"
+      ],
+      "short_name": "Automation"
+    },
+    {
+      "id": "research",
+      "product": "DeepResearch",
+      "name": "Research Agents",
+      "group": "Intelligence & knowledge",
+      "status": "Planned",
+      "scope": "Structured research with references from approved sources.",
+      "phase": 4,
+      "suggested_connections": [
+        "web_research",
+        "groq"
+      ],
+      "short_name": "Research"
+    },
+    {
+      "id": "knowledge",
+      "product": "DeepKnowledge",
+      "name": "Knowledge Agents",
+      "group": "Intelligence & knowledge",
+      "status": "Available",
+      "scope": "Per-agent document retrieval using local TF-IDF.",
+      "phase": 1,
+      "suggested_connections": [
+        "knowledge_lookup",
+        "groq"
+      ],
+      "short_name": "Knowledge"
+    },
+    {
+      "id": "communication",
+      "product": "DeepConnect",
+      "name": "Communication Agents",
+      "group": "Interaction & communication",
+      "status": "Planned",
+      "scope": "WhatsApp, email, SMS and messaging channels.",
+      "phase": 2,
+      "suggested_connections": [
+        "whatsapp"
+      ],
+      "short_name": "Communication"
+    },
+    {
+      "id": "creative",
+      "product": "DeepCreate",
+      "name": "Creative & Image Agents",
+      "group": "Creative & media",
+      "status": "Planned",
+      "scope": "Branded posters, flyers and social images.",
+      "phase": 3,
+      "suggested_connections": [
+        "image_generator"
+      ],
+      "short_name": "Creative"
+    },
+    {
+      "id": "video",
+      "product": "DeepVideo",
+      "name": "Video Generation Agents",
+      "group": "Creative & media",
+      "status": "Planned",
+      "scope": "Promotional videos, scripts, reels and subtitles.",
+      "phase": 3,
+      "suggested_connections": [
+        "video_generator"
+      ],
+      "short_name": "Video"
+    },
+    {
+      "id": "monitoring",
+      "product": "DeepMonitor",
+      "name": "Monitoring & Alert Agents",
+      "group": "Business execution",
+      "status": "Planned",
+      "scope": "Operational signals, exceptions and escalation.",
+      "phase": 4,
+      "suggested_connections": [
+        "monitoring"
+      ],
+      "short_name": "Monitoring"
+    },
+    {
+      "id": "prediction",
+      "product": "DeepPredict",
+      "name": "Prediction & Recommendation",
+      "group": "Intelligence & knowledge",
+      "status": "Planned",
+      "scope": "Forecasts, recommendations and predictive models.",
+      "phase": 4,
+      "suggested_connections": [
+        "prediction_models"
+      ],
+      "short_name": "Prediction"
+    },
+    {
+      "id": "computer_action",
+      "product": "DeepAction",
+      "name": "Computer Action Agents",
+      "group": "Business execution",
+      "status": "Planned",
+      "scope": "Supervised actions in web and desktop applications.",
+      "phase": 4,
+      "suggested_connections": [
+        "computer_actions"
+      ],
+      "short_name": "Computer Action"
+    },
+    {
+      "id": "orchestration",
+      "product": "DeepOrchestrator",
+      "name": "Multi-Agent Orchestration",
+      "group": "Coordination",
+      "status": "Simulation",
+      "scope": "Shared coordination service; current handoffs are simulated.",
+      "phase": 4,
+      "suggested_connections": [
+        "orchestrator"
+      ],
+      "short_name": "Orchestration"
+    }
+  ],
+  "domains": [
+    {
+      "id": "hr",
+      "name": "HR & Recruitment",
+      "aliases": [
+        "HR"
+      ]
+    },
+    {
+      "id": "sales",
+      "name": "Sales & Marketing",
+      "aliases": []
+    },
+    {
+      "id": "banking",
+      "name": "Banking & Financial Services",
+      "aliases": [
+        "Finance",
+        "Banking & Insurance"
+      ]
+    },
+    {
+      "id": "insurance",
+      "name": "Insurance",
+      "aliases": []
+    },
+    {
+      "id": "real_estate",
+      "name": "Real Estate",
+      "aliases": []
+    },
+    {
+      "id": "healthcare",
+      "name": "Healthcare & Pharma",
+      "aliases": [
+        "Healthcare"
+      ]
+    },
+    {
+      "id": "retail",
+      "name": "Retail & E-commerce",
+      "aliases": [
+        "Customer Support"
+      ]
+    },
+    {
+      "id": "manufacturing",
+      "name": "Manufacturing & Automotive",
+      "aliases": [
+        "Manufacturing"
+      ]
+    },
+    {
+      "id": "logistics",
+      "name": "Logistics & Supply Chain",
+      "aliases": [
+        "Logistics"
+      ]
+    },
+    {
+      "id": "education",
+      "name": "Education & EdTech",
+      "aliases": []
+    },
+    {
+      "id": "hospitality",
+      "name": "Travel & Hospitality",
+      "aliases": []
+    },
+    {
+      "id": "it",
+      "name": "IT & Enterprise Operations",
+      "aliases": []
+    }
+  ],
+  "template_concepts": [
+    {
+      "id": "employee_knowledge",
+      "name": "Employee Knowledge Assistant",
+      "domain_id": "hr",
+      "capabilities": [
+        "chat",
+        "knowledge"
+      ],
+      "phase": 1,
+      "status": "Planned",
+      "related_template": "hr_policy_assistant"
+    },
+    {
+      "id": "recruitment_coordinator",
+      "name": "Recruitment Coordinator",
+      "domain_id": "hr",
+      "capabilities": [
+        "documents",
+        "voice",
+        "automation"
+      ],
+      "phase": 2,
+      "status": "Planned",
+      "related_template": null
+    },
+    {
+      "id": "workforce_insights",
+      "name": "Workforce Insights",
+      "domain_id": "hr",
+      "capabilities": [
+        "analytics",
+        "prediction"
+      ],
+      "phase": 4,
+      "status": "Planned",
+      "related_template": null
+    },
+    {
+      "id": "lead_qualification",
+      "name": "Lead Qualification Agent",
+      "domain_id": "sales",
+      "capabilities": [
+        "chat",
+        "voice",
+        "automation"
+      ],
+      "phase": 2,
+      "status": "Planned",
+      "related_template": null
+    },
+    {
+      "id": "whatsapp_campaign",
+      "name": "WhatsApp Campaign Assistant",
+      "domain_id": "sales",
+      "capabilities": [
+        "creative",
+        "communication",
+        "automation"
+      ],
+      "phase": 3,
+      "status": "Planned",
+      "related_template": null
+    },
+    {
+      "id": "banking_assistant",
+      "name": "Banking Customer Assistant",
+      "domain_id": "banking",
+      "capabilities": [
+        "chat",
+        "knowledge",
+        "automation"
+      ],
+      "phase": 2,
+      "status": "Planned",
+      "related_template": null
+    },
+    {
+      "id": "claims_intake",
+      "name": "Claims Intake Assistant",
+      "domain_id": "insurance",
+      "capabilities": [
+        "documents",
+        "chat",
+        "automation"
+      ],
+      "phase": 2,
+      "status": "Planned",
+      "related_template": null
+    },
+    {
+      "id": "property_calling",
+      "name": "Property Calling Agent",
+      "domain_id": "real_estate",
+      "capabilities": [
+        "voice",
+        "automation"
+      ],
+      "phase": 2,
+      "status": "Planned",
+      "related_template": "voice_concierge"
+    },
+    {
+      "id": "property_marketing",
+      "name": "Property Marketing Agent",
+      "domain_id": "real_estate",
+      "capabilities": [
+        "creative",
+        "video",
+        "communication"
+      ],
+      "phase": 3,
+      "status": "Planned",
+      "related_template": null
+    },
+    {
+      "id": "sop_assistant",
+      "name": "SOP Assistant",
+      "domain_id": "healthcare",
+      "capabilities": [
+        "knowledge",
+        "chat"
+      ],
+      "phase": 1,
+      "status": "Planned",
+      "related_template": "knowledge_companion"
+    },
+    {
+      "id": "product_marketing",
+      "name": "Product Marketing Creator",
+      "domain_id": "retail",
+      "capabilities": [
+        "creative",
+        "video"
+      ],
+      "phase": 3,
+      "status": "Planned",
+      "related_template": null
+    },
+    {
+      "id": "equipment_monitoring",
+      "name": "Equipment Monitoring Assistant",
+      "domain_id": "manufacturing",
+      "capabilities": [
+        "monitoring",
+        "analytics"
+      ],
+      "phase": 4,
+      "status": "Planned",
+      "related_template": null
+    },
+    {
+      "id": "shipment_support",
+      "name": "Shipment Support Assistant",
+      "domain_id": "logistics",
+      "capabilities": [
+        "chat",
+        "automation"
+      ],
+      "phase": 2,
+      "status": "Planned",
+      "related_template": null
+    },
+    {
+      "id": "course_enquiry",
+      "name": "Course Enquiry Agent",
+      "domain_id": "education",
+      "capabilities": [
+        "chat",
+        "voice"
+      ],
+      "phase": 2,
+      "status": "Planned",
+      "related_template": null
+    },
+    {
+      "id": "training_promotion",
+      "name": "Training Promotion Creator",
+      "domain_id": "education",
+      "capabilities": [
+        "creative",
+        "video",
+        "communication"
+      ],
+      "phase": 3,
+      "status": "Planned",
+      "related_template": null
+    },
+    {
+      "id": "guest_service",
+      "name": "Guest Service Assistant",
+      "domain_id": "hospitality",
+      "capabilities": [
+        "chat",
+        "voice",
+        "automation"
+      ],
+      "phase": 2,
+      "status": "Planned",
+      "related_template": null
+    },
+    {
+      "id": "it_service_desk",
+      "name": "IT Service Desk",
+      "domain_id": "it",
+      "capabilities": [
+        "chat",
+        "knowledge",
+        "automation"
+      ],
+      "phase": 2,
+      "status": "Planned",
+      "related_template": null
+    }
+  ],
+  "phases": [
+    {
+      "id": 1,
+      "name": "Core platform",
+      "description": "Agent configuration, chat, document knowledge, local analytics and voice foundations."
+    },
+    {
+      "id": 2,
+      "name": "Connected business workflows",
+      "description": "Telephone voice, WhatsApp, email, approved actions and workflow execution."
+    },
+    {
+      "id": 3,
+      "name": "Creative studio",
+      "description": "Branded image and video generation, review and campaign tools."
+    },
+    {
+      "id": 4,
+      "name": "Enterprise services",
+      "description": "Shared orchestration, prediction, monitoring, company roles and billing."
+    }
+  ],
+  "integrations": [
+    {
+      "id": "groq",
+      "name": "Groq",
+      "kind": "integration",
+      "status": "Available",
+      "description": "Language generation using the server-configured Groq account."
+    },
+    {
+      "id": "knowledge_lookup",
+      "name": "Agent Knowledge Search",
+      "kind": "tool",
+      "status": "Available",
+      "description": "Search only this agent's uploaded reference documents."
+    },
+    {
+      "id": "spreadsheet_analysis",
+      "name": "Spreadsheet Analysis",
+      "kind": "tool",
+      "status": "Available",
+      "description": "Calculate statistics from CSV and Excel XLSX files."
+    },
+    {
+      "id": "browser_voice",
+      "name": "Browser Voice",
+      "kind": "tool",
+      "status": "Browser demo",
+      "description": "Microphone dictation and read-aloud in a supported browser."
+    },
+    {
+      "id": "vapi",
+      "name": "VAPI / Telephony",
+      "kind": "integration",
+      "status": "Planned",
+      "description": "Inbound and outbound telephone calling."
+    },
+    {
+      "id": "whatsapp",
+      "name": "WhatsApp Business",
+      "kind": "integration",
+      "status": "Planned",
+      "description": "Business messaging, approved campaigns and delivery events."
+    },
+    {
+      "id": "n8n",
+      "name": "n8n Workflow Automation",
+      "kind": "integration",
+      "status": "Planned",
+      "description": "Business workflow triggers and approved execution."
+    },
+    {
+      "id": "crm",
+      "name": "CRM / ERP",
+      "kind": "integration",
+      "status": "Planned",
+      "description": "Customer records and business-system actions."
+    },
+    {
+      "id": "email_sms",
+      "name": "Email / SMS",
+      "kind": "integration",
+      "status": "Planned",
+      "description": "Business notifications and follow-ups."
+    },
+    {
+      "id": "database",
+      "name": "Database / Text2SQL",
+      "kind": "integration",
+      "status": "Planned",
+      "description": "Authorized relational database connections and queries."
+    },
+    {
+      "id": "web_research",
+      "name": "Approved Web Research",
+      "kind": "tool",
+      "status": "Planned",
+      "description": "Research approved sources and produce cited results."
+    },
+    {
+      "id": "image_generator",
+      "name": "Image Generation Provider",
+      "kind": "integration",
+      "status": "Planned",
+      "description": "Generate branded posters, flyers and marketing images."
+    },
+    {
+      "id": "video_generator",
+      "name": "Video Generation Provider",
+      "kind": "integration",
+      "status": "Planned",
+      "description": "Produce promotional videos and reels."
+    },
+    {
+      "id": "instagram",
+      "name": "Instagram Publishing",
+      "kind": "integration",
+      "status": "Planned",
+      "description": "Publishing for supported professional accounts."
+    },
+    {
+      "id": "monitoring",
+      "name": "Monitoring & Alerts",
+      "kind": "tool",
+      "status": "Planned",
+      "description": "Watch signals and escalate operational exceptions."
+    },
+    {
+      "id": "prediction_models",
+      "name": "Prediction Models",
+      "kind": "tool",
+      "status": "Planned",
+      "description": "Run forecasts, recommendations and risk models."
+    },
+    {
+      "id": "computer_actions",
+      "name": "Supervised Computer Actions",
+      "kind": "tool",
+      "status": "Planned",
+      "description": "Authorized browser or desktop actions."
+    },
+    {
+      "id": "orchestrator",
+      "name": "Multi-Agent Coordination",
+      "kind": "tool",
+      "status": "Simulation",
+      "description": "Preview coordination; durable specialist execution is planned."
+    }
+  ]
+}

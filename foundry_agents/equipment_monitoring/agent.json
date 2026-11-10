@@ -1,0 +1,28 @@
+{
+  "name": "Equipment Monitoring Assistant",
+  "domain_id": "manufacturing",
+  "capabilities": [
+    "monitoring",
+    "analytics"
+  ],
+  "phase": 4,
+  "status": "Configuration draft",
+  "related_template": null,
+  "template_id": "equipment_monitoring",
+  "source": "foundry",
+  "type": "Chat",
+  "primary_capability": "monitoring",
+  "domain": "Manufacturing & Automotive",
+  "description": "Equipment Monitoring Assistant for Manufacturing & Automotive. Combines DeepMonitor, DeepAnalytics.",
+  "execution_status": "draft",
+  "prompt_path": "foundry_agents/equipment_monitoring/prompts/system.md",
+  "code_path": "foundry_agents/equipment_monitoring/agent.py",
+  "knowledge_path": "foundry_agents/equipment_monitoring/knowledge",
+  "tools": [
+    "monitoring",
+    "spreadsheet_analysis"
+  ],
+  "integrations": [],
+  "channels": [],
+  "approval_required": true
+}

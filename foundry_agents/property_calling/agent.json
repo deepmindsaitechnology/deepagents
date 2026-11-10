@@ -1,0 +1,30 @@
+{
+  "name": "Property Calling Agent",
+  "domain_id": "real_estate",
+  "capabilities": [
+    "voice",
+    "automation"
+  ],
+  "phase": 2,
+  "status": "Configuration draft",
+  "related_template": "voice_concierge",
+  "template_id": "property_calling",
+  "source": "foundry",
+  "type": "Voice",
+  "primary_capability": "voice",
+  "domain": "Real Estate",
+  "description": "Property Calling Agent for Real Estate. Combines DeepVoice, DeepFlow.",
+  "execution_status": "draft",
+  "prompt_path": "foundry_agents/property_calling/prompts/system.md",
+  "code_path": "foundry_agents/property_calling/agent.py",
+  "knowledge_path": "foundry_agents/property_calling/knowledge",
+  "tools": [
+    "browser_voice"
+  ],
+  "integrations": [
+    "n8n",
+    "vapi"
+  ],
+  "channels": [],
+  "approval_required": true
+}

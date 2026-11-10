@@ -1,0 +1,16 @@
+{
+  "name": "Business Analyst",
+  "domain": "Finance",
+  "type": "Analysis",
+  "description": "Turn your CSV data into clear metrics and useful business insights.",
+  "status": "Working",
+  "template_id": "business_analyst",
+  "source": "foundry",
+  "prompt_path": "foundry_agents/business_analyst/prompts/system.md",
+  "code_path": "foundry_agents/business_analyst/agent.py",
+  "knowledge_path": "foundry_agents/business_analyst/knowledge",
+  "domain_id": "banking",
+  "capabilities": [
+    "analytics"
+  ]
+}

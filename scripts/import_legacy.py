@@ -3,8 +3,8 @@ import sys
 from pathlib import Path
 
 sys.path.insert(0, str(Path(__file__).resolve().parents[1]))
-from platform_core.store import ExcelStore
-from services.migration import migrate_legacy
+from database.store import ExcelStore
+from backend.services.migration import migrate_legacy
 
 parser = argparse.ArgumentParser(
     description="Read-only legacy SQLite import into an empty Excel workbook."

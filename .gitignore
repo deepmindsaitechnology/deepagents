@@ -13,3 +13,9 @@ __pycache__/
 /user_agents/*/
 /user_prompts/*/
 /knowledge_base/user_agents/*/
+
+/database/data/
+/database/inputs/*
+!/database/inputs/README.md
+
+/.qa-artifacts/

@@ -1,0 +1,17 @@
+{
+  "name": "Claims Companion",
+  "domain": "Banking & Insurance",
+  "type": "Document",
+  "description": "Explore policy reference text. Professional review remains essential.",
+  "status": "Demo ready",
+  "template_id": "claims_companion",
+  "source": "foundry",
+  "prompt_path": "foundry_agents/claims_companion/prompts/system.md",
+  "code_path": "foundry_agents/claims_companion/agent.py",
+  "knowledge_path": "foundry_agents/claims_companion/knowledge",
+  "domain_id": "insurance",
+  "capabilities": [
+    "documents",
+    "knowledge"
+  ]
+}

@@ -4,11 +4,11 @@ import unittest
 from unittest.mock import patch
 from fastapi.testclient import TestClient
 import app
-from api import agents, analysis
+from backend.api import agents, analysis
 from foundry_agents import registry
-from services import workspaces
-from platform_core import config
-from platform_core.store import ExcelStore
+from backend.services import workspaces
+from backend.core import config
+from database.store import ExcelStore
 from pathlib import Path
 
 

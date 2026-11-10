@@ -1,0 +1,16 @@
+{
+  "name": "Sales Development",
+  "domain": "Sales & Marketing",
+  "type": "Voice",
+  "description": "Showcase lead conversations and follow-up planning.",
+  "status": "Browser demo",
+  "template_id": "sales_development",
+  "source": "foundry",
+  "prompt_path": "foundry_agents/sales_development/prompts/system.md",
+  "code_path": "foundry_agents/sales_development/agent.py",
+  "knowledge_path": "foundry_agents/sales_development/knowledge",
+  "domain_id": "sales",
+  "capabilities": [
+    "voice"
+  ]
+}

@@ -1,0 +1,16 @@
+{
+  "name": "Talent Scout",
+  "domain": "HR",
+  "type": "Workflow",
+  "description": "Showcase candidate screening and interview scheduling workflows.",
+  "status": "Simulation",
+  "template_id": "talent_scout",
+  "source": "foundry",
+  "prompt_path": "foundry_agents/talent_scout/prompts/system.md",
+  "code_path": "foundry_agents/talent_scout/agent.py",
+  "knowledge_path": "foundry_agents/talent_scout/knowledge",
+  "domain_id": "hr",
+  "capabilities": [
+    "automation"
+  ]
+}

@@ -4,10 +4,10 @@ from types import SimpleNamespace
 from unittest.mock import AsyncMock, patch
 from fastapi.testclient import TestClient
 from openpyxl import load_workbook
-from api import auth
-from platform_core import config
-from platform_core.store import ExcelStore, SCHEMA
-from services.migration import migrate_legacy
+from backend.api import auth
+from backend.core import config
+from database.store import ExcelStore, SCHEMA
+from backend.services.migration import migrate_legacy
 from helpers import PlatformCase
 
 
@@ -172,7 +172,7 @@ class StorageAuthTests(PlatformCase):
         )
         code = self.root / agent["code_path"]
         code.write_text(
-            'from foundry_agents.chat_agent import ChatAgent\nclass Agent(ChatAgent):\n async def run(self, context):\n  return {"answer": "Custom developer logic", "mode": "Custom", "sources": []}\n'
+            'from foundry_agents.capabilities.chat_agent import ChatAgent\nclass Agent(ChatAgent):\n async def run(self, context):\n  return {"answer": "Custom developer logic", "mode": "Custom", "sources": []}\n'
         )
         response = self.client.post(
             "/api/chat", json={"agent_id": agent["id"], "message": "hi"}
@@ -201,7 +201,7 @@ class StorageAuthTests(PlatformCase):
 
     def test_workbook_save_failure_cleans_new_agent_files_and_restores_prompt(self):
         with patch(
-            "platform_core.store.os.replace",
+            "database.store.os.replace",
             side_effect=PermissionError("Excel file is open"),
         ):
             response = self.client.post(
@@ -221,7 +221,7 @@ class StorageAuthTests(PlatformCase):
             },
         ).json()
         with patch(
-            "platform_core.store.os.replace",
+            "database.store.os.replace",
             side_effect=PermissionError("Excel file is open"),
         ):
             self.assertEqual(

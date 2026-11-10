@@ -1,0 +1,28 @@
+{
+  "name": "Shipment Support Assistant",
+  "domain_id": "logistics",
+  "capabilities": [
+    "chat",
+    "automation"
+  ],
+  "phase": 2,
+  "status": "Configuration draft",
+  "related_template": null,
+  "template_id": "shipment_support",
+  "source": "foundry",
+  "type": "Chat",
+  "primary_capability": "chat",
+  "domain": "Logistics & Supply Chain",
+  "description": "Shipment Support Assistant for Logistics & Supply Chain. Combines DeepChat, DeepFlow.",
+  "execution_status": "draft",
+  "prompt_path": "foundry_agents/shipment_support/prompts/system.md",
+  "code_path": "foundry_agents/shipment_support/agent.py",
+  "knowledge_path": "foundry_agents/shipment_support/knowledge",
+  "tools": [],
+  "integrations": [
+    "groq",
+    "n8n"
+  ],
+  "channels": [],
+  "approval_required": true
+}

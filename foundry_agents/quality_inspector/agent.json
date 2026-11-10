@@ -1,0 +1,16 @@
+{
+  "name": "Quality Inspector",
+  "domain": "Manufacturing",
+  "type": "Analysis",
+  "description": "Explore numeric quality and production records from a CSV file.",
+  "status": "Working",
+  "template_id": "quality_inspector",
+  "source": "foundry",
+  "prompt_path": "foundry_agents/quality_inspector/prompts/system.md",
+  "code_path": "foundry_agents/quality_inspector/agent.py",
+  "knowledge_path": "foundry_agents/quality_inspector/knowledge",
+  "domain_id": "manufacturing",
+  "capabilities": [
+    "analytics"
+  ]
+}

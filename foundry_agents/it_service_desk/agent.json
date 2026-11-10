@@ -1,0 +1,31 @@
+{
+  "name": "IT Service Desk",
+  "domain_id": "it",
+  "capabilities": [
+    "chat",
+    "knowledge",
+    "automation"
+  ],
+  "phase": 2,
+  "status": "Configuration draft",
+  "related_template": null,
+  "template_id": "it_service_desk",
+  "source": "foundry",
+  "type": "Chat",
+  "primary_capability": "chat",
+  "domain": "IT & Enterprise Operations",
+  "description": "IT Service Desk for IT & Enterprise Operations. Combines DeepChat, DeepKnowledge, DeepFlow.",
+  "execution_status": "draft",
+  "prompt_path": "foundry_agents/it_service_desk/prompts/system.md",
+  "code_path": "foundry_agents/it_service_desk/agent.py",
+  "knowledge_path": "foundry_agents/it_service_desk/knowledge",
+  "tools": [
+    "knowledge_lookup"
+  ],
+  "integrations": [
+    "groq",
+    "n8n"
+  ],
+  "channels": [],
+  "approval_required": true
+}

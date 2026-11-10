@@ -1,0 +1,31 @@
+{
+  "name": "Banking Customer Assistant",
+  "domain_id": "banking",
+  "capabilities": [
+    "chat",
+    "knowledge",
+    "automation"
+  ],
+  "phase": 2,
+  "status": "Configuration draft",
+  "related_template": null,
+  "template_id": "banking_assistant",
+  "source": "foundry",
+  "type": "Chat",
+  "primary_capability": "chat",
+  "domain": "Banking & Financial Services",
+  "description": "Banking Customer Assistant for Banking & Financial Services. Combines DeepChat, DeepKnowledge, DeepFlow.",
+  "execution_status": "draft",
+  "prompt_path": "foundry_agents/banking_assistant/prompts/system.md",
+  "code_path": "foundry_agents/banking_assistant/agent.py",
+  "knowledge_path": "foundry_agents/banking_assistant/knowledge",
+  "tools": [
+    "knowledge_lookup"
+  ],
+  "integrations": [
+    "groq",
+    "n8n"
+  ],
+  "channels": [],
+  "approval_required": true
+}

@@ -1,123 +1,517 @@
 [
   {
-    "name": "HR Policy Assistant",
-    "domain": "HR",
+    "name": "Employee Knowledge Assistant",
+    "domain_id": "hr",
+    "capabilities": [
+      "chat",
+      "knowledge"
+    ],
+    "phase": 1,
+    "status": "Ready to configure",
+    "related_template": "hr_policy_assistant",
+    "template_id": "employee_knowledge",
+    "source": "foundry",
     "type": "Chat",
-    "description": "Give your people clear answers about policies, leave, and everyday work.",
-    "status": "Demo ready",
-    "template_id": "hr_policy_assistant",
-    "source": "foundry",
-    "prompt_path": "foundry_prompts/hr_policy_assistant.md",
-    "code_path": "foundry_agents/chat_agent.py"
+    "primary_capability": "chat",
+    "domain": "HR & Recruitment",
+    "description": "Employee Knowledge Assistant for HR & Recruitment. Combines DeepChat, DeepKnowledge.",
+    "execution_status": "ready",
+    "prompt_path": "foundry_agents/employee_knowledge/prompts/system.md",
+    "code_path": "foundry_agents/employee_knowledge/agent.py",
+    "knowledge_path": "foundry_agents/employee_knowledge/knowledge",
+    "tools": [
+      "knowledge_lookup"
+    ],
+    "integrations": [
+      "groq"
+    ],
+    "channels": [],
+    "approval_required": true
   },
   {
-    "name": "Customer Care",
-    "domain": "Customer Support",
-    "type": "Chat",
-    "description": "A helpful first point of contact for product questions and support requests.",
-    "status": "Demo ready",
-    "template_id": "customer_care",
+    "name": "Recruitment Coordinator",
+    "domain_id": "hr",
+    "capabilities": [
+      "documents",
+      "voice",
+      "automation"
+    ],
+    "phase": 2,
+    "status": "Configuration draft",
+    "related_template": null,
+    "template_id": "recruitment_coordinator",
     "source": "foundry",
-    "prompt_path": "foundry_prompts/customer_care.md",
-    "code_path": "foundry_agents/chat_agent.py"
-  },
-  {
-    "name": "Business Analyst",
-    "domain": "Finance",
-    "type": "Analysis",
-    "description": "Turn your CSV data into clear metrics and useful business insights.",
-    "status": "Working",
-    "template_id": "business_analyst",
-    "source": "foundry",
-    "prompt_path": "foundry_prompts/business_analyst.md",
-    "code_path": "foundry_agents/analysis_agent.py"
-  },
-  {
-    "name": "Voice Concierge",
-    "domain": "Real Estate",
-    "type": "Voice",
-    "description": "Explore natural conversations for property enquiries and lead qualification.",
-    "status": "Browser demo",
-    "template_id": "voice_concierge",
-    "source": "foundry",
-    "prompt_path": "foundry_prompts/voice_concierge.md",
-    "code_path": "foundry_agents/voice_agent.py"
-  },
-  {
-    "name": "Knowledge Companion",
-    "domain": "Healthcare",
     "type": "Document",
-    "description": "Explore answers from your own reference text with a source shown.",
-    "status": "Demo ready",
-    "template_id": "knowledge_companion",
-    "source": "foundry",
-    "prompt_path": "foundry_prompts/knowledge_companion.md",
-    "code_path": "foundry_agents/document_agent.py"
+    "primary_capability": "documents",
+    "domain": "HR & Recruitment",
+    "description": "Recruitment Coordinator for HR & Recruitment. Combines DeepDocs, DeepVoice, DeepFlow.",
+    "execution_status": "draft",
+    "prompt_path": "foundry_agents/recruitment_coordinator/prompts/system.md",
+    "code_path": "foundry_agents/recruitment_coordinator/agent.py",
+    "knowledge_path": "foundry_agents/recruitment_coordinator/knowledge",
+    "tools": [
+      "knowledge_lookup",
+      "browser_voice"
+    ],
+    "integrations": [
+      "n8n",
+      "vapi"
+    ],
+    "channels": [],
+    "approval_required": true
   },
   {
-    "name": "Operations Autopilot",
-    "domain": "Logistics",
-    "type": "Workflow",
-    "description": "Preview a shipment exception workflow with human approval built in.",
-    "status": "Simulation",
-    "template_id": "operations_autopilot",
+    "name": "Workforce Insights",
+    "domain_id": "hr",
+    "capabilities": [
+      "analytics",
+      "prediction"
+    ],
+    "phase": 4,
+    "status": "Configuration draft",
+    "related_template": null,
+    "template_id": "workforce_insights",
     "source": "foundry",
-    "prompt_path": "foundry_prompts/operations_autopilot.md",
-    "code_path": "foundry_agents/workflow_agent.py"
+    "type": "Analysis",
+    "primary_capability": "analytics",
+    "domain": "HR & Recruitment",
+    "description": "Workforce Insights for HR & Recruitment. Combines DeepAnalytics, DeepPredict.",
+    "execution_status": "draft",
+    "prompt_path": "foundry_agents/workforce_insights/prompts/system.md",
+    "code_path": "foundry_agents/workforce_insights/agent.py",
+    "knowledge_path": "foundry_agents/workforce_insights/knowledge",
+    "tools": [
+      "spreadsheet_analysis",
+      "prediction_models"
+    ],
+    "integrations": [],
+    "channels": [],
+    "approval_required": true
   },
   {
-    "name": "Talent Scout",
-    "domain": "HR",
-    "type": "Workflow",
-    "description": "Showcase candidate screening and interview scheduling workflows.",
-    "status": "Simulation",
-    "template_id": "talent_scout",
+    "name": "Lead Qualification Agent",
+    "domain_id": "sales",
+    "capabilities": [
+      "chat",
+      "voice",
+      "automation"
+    ],
+    "phase": 2,
+    "status": "Configuration draft",
+    "related_template": null,
+    "template_id": "lead_qualification",
     "source": "foundry",
-    "prompt_path": "foundry_prompts/talent_scout.md",
-    "code_path": "foundry_agents/workflow_agent.py"
-  },
-  {
-    "name": "Sales Development",
+    "type": "Chat",
+    "primary_capability": "chat",
     "domain": "Sales & Marketing",
-    "type": "Voice",
-    "description": "Showcase lead conversations and follow-up planning.",
-    "status": "Browser demo",
-    "template_id": "sales_development",
-    "source": "foundry",
-    "prompt_path": "foundry_prompts/sales_development.md",
-    "code_path": "foundry_agents/voice_agent.py"
+    "description": "Lead Qualification Agent for Sales & Marketing. Combines DeepChat, DeepVoice, DeepFlow.",
+    "execution_status": "draft",
+    "prompt_path": "foundry_agents/lead_qualification/prompts/system.md",
+    "code_path": "foundry_agents/lead_qualification/agent.py",
+    "knowledge_path": "foundry_agents/lead_qualification/knowledge",
+    "tools": [
+      "browser_voice"
+    ],
+    "integrations": [
+      "groq",
+      "n8n",
+      "vapi"
+    ],
+    "channels": [],
+    "approval_required": true
   },
   {
-    "name": "Quality Inspector",
-    "domain": "Manufacturing",
-    "type": "Analysis",
-    "description": "Explore numeric quality and production records from a CSV file.",
-    "status": "Working",
-    "template_id": "quality_inspector",
+    "name": "WhatsApp Campaign Assistant",
+    "domain_id": "sales",
+    "capabilities": [
+      "creative",
+      "communication",
+      "automation"
+    ],
+    "phase": 3,
+    "status": "Configuration draft",
+    "related_template": null,
+    "template_id": "whatsapp_campaign",
     "source": "foundry",
-    "prompt_path": "foundry_prompts/quality_inspector.md",
-    "code_path": "foundry_agents/analysis_agent.py"
+    "type": "Chat",
+    "primary_capability": "creative",
+    "domain": "Sales & Marketing",
+    "description": "WhatsApp Campaign Assistant for Sales & Marketing. Combines DeepCreate, DeepConnect, DeepFlow.",
+    "execution_status": "draft",
+    "prompt_path": "foundry_agents/whatsapp_campaign/prompts/system.md",
+    "code_path": "foundry_agents/whatsapp_campaign/agent.py",
+    "knowledge_path": "foundry_agents/whatsapp_campaign/knowledge",
+    "tools": [],
+    "integrations": [
+      "image_generator",
+      "whatsapp",
+      "n8n"
+    ],
+    "channels": [
+      "whatsapp"
+    ],
+    "approval_required": true
   },
   {
-    "name": "Claims Companion",
-    "domain": "Banking & Insurance",
+    "name": "Banking Customer Assistant",
+    "domain_id": "banking",
+    "capabilities": [
+      "chat",
+      "knowledge",
+      "automation"
+    ],
+    "phase": 2,
+    "status": "Configuration draft",
+    "related_template": null,
+    "template_id": "banking_assistant",
+    "source": "foundry",
+    "type": "Chat",
+    "primary_capability": "chat",
+    "domain": "Banking & Financial Services",
+    "description": "Banking Customer Assistant for Banking & Financial Services. Combines DeepChat, DeepKnowledge, DeepFlow.",
+    "execution_status": "draft",
+    "prompt_path": "foundry_agents/banking_assistant/prompts/system.md",
+    "code_path": "foundry_agents/banking_assistant/agent.py",
+    "knowledge_path": "foundry_agents/banking_assistant/knowledge",
+    "tools": [
+      "knowledge_lookup"
+    ],
+    "integrations": [
+      "groq",
+      "n8n"
+    ],
+    "channels": [],
+    "approval_required": true
+  },
+  {
+    "name": "Claims Intake Assistant",
+    "domain_id": "insurance",
+    "capabilities": [
+      "documents",
+      "chat",
+      "automation"
+    ],
+    "phase": 2,
+    "status": "Configuration draft",
+    "related_template": null,
+    "template_id": "claims_intake",
+    "source": "foundry",
     "type": "Document",
-    "description": "Explore policy reference text. Professional review remains essential.",
-    "status": "Demo ready",
-    "template_id": "claims_companion",
-    "source": "foundry",
-    "prompt_path": "foundry_prompts/claims_companion.md",
-    "code_path": "foundry_agents/document_agent.py"
+    "primary_capability": "documents",
+    "domain": "Insurance",
+    "description": "Claims Intake Assistant for Insurance. Combines DeepDocs, DeepChat, DeepFlow.",
+    "execution_status": "draft",
+    "prompt_path": "foundry_agents/claims_intake/prompts/system.md",
+    "code_path": "foundry_agents/claims_intake/agent.py",
+    "knowledge_path": "foundry_agents/claims_intake/knowledge",
+    "tools": [
+      "knowledge_lookup"
+    ],
+    "integrations": [
+      "groq",
+      "n8n"
+    ],
+    "channels": [],
+    "approval_required": true
   },
   {
-    "name": "Research Team",
-    "domain": "Finance",
-    "type": "Agent Team",
-    "description": "Preview researcher, analyst, and reviewer handoffs in one workspace.",
-    "status": "Simulation",
-    "template_id": "research_team",
+    "name": "Property Calling Agent",
+    "domain_id": "real_estate",
+    "capabilities": [
+      "voice",
+      "automation"
+    ],
+    "phase": 2,
+    "status": "Configuration draft",
+    "related_template": "voice_concierge",
+    "template_id": "property_calling",
     "source": "foundry",
-    "prompt_path": "foundry_prompts/research_team.md",
-    "code_path": "foundry_agents/team_agent.py"
+    "type": "Voice",
+    "primary_capability": "voice",
+    "domain": "Real Estate",
+    "description": "Property Calling Agent for Real Estate. Combines DeepVoice, DeepFlow.",
+    "execution_status": "draft",
+    "prompt_path": "foundry_agents/property_calling/prompts/system.md",
+    "code_path": "foundry_agents/property_calling/agent.py",
+    "knowledge_path": "foundry_agents/property_calling/knowledge",
+    "tools": [
+      "browser_voice"
+    ],
+    "integrations": [
+      "n8n",
+      "vapi"
+    ],
+    "channels": [],
+    "approval_required": true
+  },
+  {
+    "name": "Property Marketing Agent",
+    "domain_id": "real_estate",
+    "capabilities": [
+      "creative",
+      "video",
+      "communication"
+    ],
+    "phase": 3,
+    "status": "Configuration draft",
+    "related_template": null,
+    "template_id": "property_marketing",
+    "source": "foundry",
+    "type": "Chat",
+    "primary_capability": "creative",
+    "domain": "Real Estate",
+    "description": "Property Marketing Agent for Real Estate. Combines DeepCreate, DeepVideo, DeepConnect.",
+    "execution_status": "draft",
+    "prompt_path": "foundry_agents/property_marketing/prompts/system.md",
+    "code_path": "foundry_agents/property_marketing/agent.py",
+    "knowledge_path": "foundry_agents/property_marketing/knowledge",
+    "tools": [],
+    "integrations": [
+      "image_generator",
+      "video_generator",
+      "whatsapp"
+    ],
+    "channels": [
+      "whatsapp"
+    ],
+    "approval_required": true
+  },
+  {
+    "name": "SOP Assistant",
+    "domain_id": "healthcare",
+    "capabilities": [
+      "knowledge",
+      "chat"
+    ],
+    "phase": 1,
+    "status": "Ready to configure",
+    "related_template": "knowledge_companion",
+    "template_id": "sop_assistant",
+    "source": "foundry",
+    "type": "Document",
+    "primary_capability": "knowledge",
+    "domain": "Healthcare & Pharma",
+    "description": "SOP Assistant for Healthcare & Pharma. Combines DeepKnowledge, DeepChat.",
+    "execution_status": "ready",
+    "prompt_path": "foundry_agents/sop_assistant/prompts/system.md",
+    "code_path": "foundry_agents/sop_assistant/agent.py",
+    "knowledge_path": "foundry_agents/sop_assistant/knowledge",
+    "tools": [
+      "knowledge_lookup"
+    ],
+    "integrations": [
+      "groq"
+    ],
+    "channels": [],
+    "approval_required": true
+  },
+  {
+    "name": "Product Marketing Creator",
+    "domain_id": "retail",
+    "capabilities": [
+      "creative",
+      "video"
+    ],
+    "phase": 3,
+    "status": "Configuration draft",
+    "related_template": null,
+    "template_id": "product_marketing",
+    "source": "foundry",
+    "type": "Chat",
+    "primary_capability": "creative",
+    "domain": "Retail & E-commerce",
+    "description": "Product Marketing Creator for Retail & E-commerce. Combines DeepCreate, DeepVideo.",
+    "execution_status": "draft",
+    "prompt_path": "foundry_agents/product_marketing/prompts/system.md",
+    "code_path": "foundry_agents/product_marketing/agent.py",
+    "knowledge_path": "foundry_agents/product_marketing/knowledge",
+    "tools": [],
+    "integrations": [
+      "image_generator",
+      "video_generator"
+    ],
+    "channels": [],
+    "approval_required": true
+  },
+  {
+    "name": "Equipment Monitoring Assistant",
+    "domain_id": "manufacturing",
+    "capabilities": [
+      "monitoring",
+      "analytics"
+    ],
+    "phase": 4,
+    "status": "Configuration draft",
+    "related_template": null,
+    "template_id": "equipment_monitoring",
+    "source": "foundry",
+    "type": "Chat",
+    "primary_capability": "monitoring",
+    "domain": "Manufacturing & Automotive",
+    "description": "Equipment Monitoring Assistant for Manufacturing & Automotive. Combines DeepMonitor, DeepAnalytics.",
+    "execution_status": "draft",
+    "prompt_path": "foundry_agents/equipment_monitoring/prompts/system.md",
+    "code_path": "foundry_agents/equipment_monitoring/agent.py",
+    "knowledge_path": "foundry_agents/equipment_monitoring/knowledge",
+    "tools": [
+      "monitoring",
+      "spreadsheet_analysis"
+    ],
+    "integrations": [],
+    "channels": [],
+    "approval_required": true
+  },
+  {
+    "name": "Shipment Support Assistant",
+    "domain_id": "logistics",
+    "capabilities": [
+      "chat",
+      "automation"
+    ],
+    "phase": 2,
+    "status": "Configuration draft",
+    "related_template": null,
+    "template_id": "shipment_support",
+    "source": "foundry",
+    "type": "Chat",
+    "primary_capability": "chat",
+    "domain": "Logistics & Supply Chain",
+    "description": "Shipment Support Assistant for Logistics & Supply Chain. Combines DeepChat, DeepFlow.",
+    "execution_status": "draft",
+    "prompt_path": "foundry_agents/shipment_support/prompts/system.md",
+    "code_path": "foundry_agents/shipment_support/agent.py",
+    "knowledge_path": "foundry_agents/shipment_support/knowledge",
+    "tools": [],
+    "integrations": [
+      "groq",
+      "n8n"
+    ],
+    "channels": [],
+    "approval_required": true
+  },
+  {
+    "name": "Course Enquiry Agent",
+    "domain_id": "education",
+    "capabilities": [
+      "chat",
+      "voice"
+    ],
+    "phase": 2,
+    "status": "Configuration draft",
+    "related_template": null,
+    "template_id": "course_enquiry",
+    "source": "foundry",
+    "type": "Chat",
+    "primary_capability": "chat",
+    "domain": "Education & EdTech",
+    "description": "Course Enquiry Agent for Education & EdTech. Combines DeepChat, DeepVoice.",
+    "execution_status": "draft",
+    "prompt_path": "foundry_agents/course_enquiry/prompts/system.md",
+    "code_path": "foundry_agents/course_enquiry/agent.py",
+    "knowledge_path": "foundry_agents/course_enquiry/knowledge",
+    "tools": [
+      "browser_voice"
+    ],
+    "integrations": [
+      "groq",
+      "vapi"
+    ],
+    "channels": [],
+    "approval_required": true
+  },
+  {
+    "name": "Training Promotion Creator",
+    "domain_id": "education",
+    "capabilities": [
+      "creative",
+      "video",
+      "communication"
+    ],
+    "phase": 3,
+    "status": "Configuration draft",
+    "related_template": null,
+    "template_id": "training_promotion",
+    "source": "foundry",
+    "type": "Chat",
+    "primary_capability": "creative",
+    "domain": "Education & EdTech",
+    "description": "Training Promotion Creator for Education & EdTech. Combines DeepCreate, DeepVideo, DeepConnect.",
+    "execution_status": "draft",
+    "prompt_path": "foundry_agents/training_promotion/prompts/system.md",
+    "code_path": "foundry_agents/training_promotion/agent.py",
+    "knowledge_path": "foundry_agents/training_promotion/knowledge",
+    "tools": [],
+    "integrations": [
+      "image_generator",
+      "video_generator",
+      "whatsapp"
+    ],
+    "channels": [
+      "whatsapp"
+    ],
+    "approval_required": true
+  },
+  {
+    "name": "Guest Service Assistant",
+    "domain_id": "hospitality",
+    "capabilities": [
+      "chat",
+      "voice",
+      "automation"
+    ],
+    "phase": 2,
+    "status": "Configuration draft",
+    "related_template": null,
+    "template_id": "guest_service",
+    "source": "foundry",
+    "type": "Chat",
+    "primary_capability": "chat",
+    "domain": "Travel & Hospitality",
+    "description": "Guest Service Assistant for Travel & Hospitality. Combines DeepChat, DeepVoice, DeepFlow.",
+    "execution_status": "draft",
+    "prompt_path": "foundry_agents/guest_service/prompts/system.md",
+    "code_path": "foundry_agents/guest_service/agent.py",
+    "knowledge_path": "foundry_agents/guest_service/knowledge",
+    "tools": [
+      "browser_voice"
+    ],
+    "integrations": [
+      "groq",
+      "n8n",
+      "vapi"
+    ],
+    "channels": [],
+    "approval_required": true
+  },
+  {
+    "name": "IT Service Desk",
+    "domain_id": "it",
+    "capabilities": [
+      "chat",
+      "knowledge",
+      "automation"
+    ],
+    "phase": 2,
+    "status": "Configuration draft",
+    "related_template": null,
+    "template_id": "it_service_desk",
+    "source": "foundry",
+    "type": "Chat",
+    "primary_capability": "chat",
+    "domain": "IT & Enterprise Operations",
+    "description": "IT Service Desk for IT & Enterprise Operations. Combines DeepChat, DeepKnowledge, DeepFlow.",
+    "execution_status": "draft",
+    "prompt_path": "foundry_agents/it_service_desk/prompts/system.md",
+    "code_path": "foundry_agents/it_service_desk/agent.py",
+    "knowledge_path": "foundry_agents/it_service_desk/knowledge",
+    "tools": [
+      "knowledge_lookup"
+    ],
+    "integrations": [
+      "groq",
+      "n8n"
+    ],
+    "channels": [],
+    "approval_required": true
   }
 ]

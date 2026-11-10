@@ -1,0 +1,32 @@
+{
+  "name": "Lead Qualification Agent",
+  "domain_id": "sales",
+  "capabilities": [
+    "chat",
+    "voice",
+    "automation"
+  ],
+  "phase": 2,
+  "status": "Configuration draft",
+  "related_template": null,
+  "template_id": "lead_qualification",
+  "source": "foundry",
+  "type": "Chat",
+  "primary_capability": "chat",
+  "domain": "Sales & Marketing",
+  "description": "Lead Qualification Agent for Sales & Marketing. Combines DeepChat, DeepVoice, DeepFlow.",
+  "execution_status": "draft",
+  "prompt_path": "foundry_agents/lead_qualification/prompts/system.md",
+  "code_path": "foundry_agents/lead_qualification/agent.py",
+  "knowledge_path": "foundry_agents/lead_qualification/knowledge",
+  "tools": [
+    "browser_voice"
+  ],
+  "integrations": [
+    "groq",
+    "n8n",
+    "vapi"
+  ],
+  "channels": [],
+  "approval_required": true
+}

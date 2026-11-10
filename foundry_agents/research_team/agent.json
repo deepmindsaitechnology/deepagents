@@ -1,0 +1,16 @@
+{
+  "name": "Research Team",
+  "domain": "Finance",
+  "type": "Agent Team",
+  "description": "Preview researcher, analyst, and reviewer handoffs in one workspace.",
+  "status": "Simulation",
+  "template_id": "research_team",
+  "source": "foundry",
+  "prompt_path": "foundry_agents/research_team/prompts/system.md",
+  "code_path": "foundry_agents/research_team/agent.py",
+  "knowledge_path": "foundry_agents/research_team/knowledge",
+  "domain_id": "banking",
+  "capabilities": [
+    "orchestration"
+  ]
+}

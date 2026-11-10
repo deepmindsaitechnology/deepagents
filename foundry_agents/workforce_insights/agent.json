@@ -1,0 +1,28 @@
+{
+  "name": "Workforce Insights",
+  "domain_id": "hr",
+  "capabilities": [
+    "analytics",
+    "prediction"
+  ],
+  "phase": 4,
+  "status": "Configuration draft",
+  "related_template": null,
+  "template_id": "workforce_insights",
+  "source": "foundry",
+  "type": "Analysis",
+  "primary_capability": "analytics",
+  "domain": "HR & Recruitment",
+  "description": "Workforce Insights for HR & Recruitment. Combines DeepAnalytics, DeepPredict.",
+  "execution_status": "draft",
+  "prompt_path": "foundry_agents/workforce_insights/prompts/system.md",
+  "code_path": "foundry_agents/workforce_insights/agent.py",
+  "knowledge_path": "foundry_agents/workforce_insights/knowledge",
+  "tools": [
+    "spreadsheet_analysis",
+    "prediction_models"
+  ],
+  "integrations": [],
+  "channels": [],
+  "approval_required": true
+}

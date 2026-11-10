@@ -1,0 +1,31 @@
+{
+  "name": "Claims Intake Assistant",
+  "domain_id": "insurance",
+  "capabilities": [
+    "documents",
+    "chat",
+    "automation"
+  ],
+  "phase": 2,
+  "status": "Configuration draft",
+  "related_template": null,
+  "template_id": "claims_intake",
+  "source": "foundry",
+  "type": "Document",
+  "primary_capability": "documents",
+  "domain": "Insurance",
+  "description": "Claims Intake Assistant for Insurance. Combines DeepDocs, DeepChat, DeepFlow.",
+  "execution_status": "draft",
+  "prompt_path": "foundry_agents/claims_intake/prompts/system.md",
+  "code_path": "foundry_agents/claims_intake/agent.py",
+  "knowledge_path": "foundry_agents/claims_intake/knowledge",
+  "tools": [
+    "knowledge_lookup"
+  ],
+  "integrations": [
+    "groq",
+    "n8n"
+  ],
+  "channels": [],
+  "approval_required": true
+}

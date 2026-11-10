@@ -1,0 +1,17 @@
+{
+  "name": "HR Policy Assistant",
+  "domain": "HR",
+  "type": "Chat",
+  "description": "Give your people clear answers about policies, leave, and everyday work.",
+  "status": "Demo ready",
+  "template_id": "hr_policy_assistant",
+  "source": "foundry",
+  "prompt_path": "foundry_agents/hr_policy_assistant/prompts/system.md",
+  "code_path": "foundry_agents/hr_policy_assistant/agent.py",
+  "knowledge_path": "foundry_agents/hr_policy_assistant/knowledge",
+  "domain_id": "hr",
+  "capabilities": [
+    "chat",
+    "knowledge"
+  ]
+}

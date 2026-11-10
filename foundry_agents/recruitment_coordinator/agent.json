@@ -1,0 +1,32 @@
+{
+  "name": "Recruitment Coordinator",
+  "domain_id": "hr",
+  "capabilities": [
+    "documents",
+    "voice",
+    "automation"
+  ],
+  "phase": 2,
+  "status": "Configuration draft",
+  "related_template": null,
+  "template_id": "recruitment_coordinator",
+  "source": "foundry",
+  "type": "Document",
+  "primary_capability": "documents",
+  "domain": "HR & Recruitment",
+  "description": "Recruitment Coordinator for HR & Recruitment. Combines DeepDocs, DeepVoice, DeepFlow.",
+  "execution_status": "draft",
+  "prompt_path": "foundry_agents/recruitment_coordinator/prompts/system.md",
+  "code_path": "foundry_agents/recruitment_coordinator/agent.py",
+  "knowledge_path": "foundry_agents/recruitment_coordinator/knowledge",
+  "tools": [
+    "knowledge_lookup",
+    "browser_voice"
+  ],
+  "integrations": [
+    "n8n",
+    "vapi"
+  ],
+  "channels": [],
+  "approval_required": true
+}

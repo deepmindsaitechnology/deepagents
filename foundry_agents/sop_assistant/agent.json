@@ -1,0 +1,29 @@
+{
+  "name": "SOP Assistant",
+  "domain_id": "healthcare",
+  "capabilities": [
+    "knowledge",
+    "chat"
+  ],
+  "phase": 1,
+  "status": "Ready to configure",
+  "related_template": "knowledge_companion",
+  "template_id": "sop_assistant",
+  "source": "foundry",
+  "type": "Document",
+  "primary_capability": "knowledge",
+  "domain": "Healthcare & Pharma",
+  "description": "SOP Assistant for Healthcare & Pharma. Combines DeepKnowledge, DeepChat.",
+  "execution_status": "ready",
+  "prompt_path": "foundry_agents/sop_assistant/prompts/system.md",
+  "code_path": "foundry_agents/sop_assistant/agent.py",
+  "knowledge_path": "foundry_agents/sop_assistant/knowledge",
+  "tools": [
+    "knowledge_lookup"
+  ],
+  "integrations": [
+    "groq"
+  ],
+  "channels": [],
+  "approval_required": true
+}
